@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130503175906) do
+ActiveRecord::Schema.define(:version => 20130503181109) do
 
   create_table "boots", :force => true do |t|
     t.string   "name",        :null => false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20130503175906) do
     t.datetime "posted_at",   :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.text     "data"
   end
 
   add_index "posts", ["resource_id"], :name => "index_posts_on_resource_id"

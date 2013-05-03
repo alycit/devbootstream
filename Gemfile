@@ -22,6 +22,11 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'tumblr_client'
+gem 'sidekiq'
+gem 'redis'
+gem 'whenever'
+gem 'activerecord-postgres-hstore'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
