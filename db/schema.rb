@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130503031447) do
+ActiveRecord::Schema.define(:version => 20130503045621) do
 
   create_table "boots", :force => true do |t|
     t.string   "name",        :null => false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20130503031447) do
 
   create_table "resources", :force => true do |t|
     t.integer  "boot_id"
-    t.integer  "identifier",      :null => false
+    t.string   "identifier",      :null => false
     t.string   "user_name",       :null => false
     t.string   "source",          :null => false
     t.string   "profile_pic_url"
