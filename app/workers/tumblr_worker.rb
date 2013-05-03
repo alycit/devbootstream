@@ -13,7 +13,7 @@ class TumblrWorker
       data["posts"].each do |post|
         #todo: need to account for repeat posts and new posts, but will have 
         #to wait for agreed validation
-        resource.posts.create(
+        resource.posts.new(
           :media_type=>post["type"],
           :url=>post["url"],
           :body=>post["body"],
@@ -21,6 +21,8 @@ class TumblrWorker
           :posted_at => DateTime.strptime(post["timestamp"].to_s,"%s"),
           :data => post
         )
+
+        resource.save
 
       end
     end
