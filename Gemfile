@@ -25,7 +25,12 @@ gem 'jquery-rails'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
+  gem "nyan-cat-formatter"
+  gem "better_errors"
+  gem "debugger"
+  gem "pry"
 end
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
