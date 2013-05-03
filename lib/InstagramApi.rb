@@ -9,8 +9,11 @@ module InstagramAPI
   DBCChicago_lat = "41.889714"
   DBCChicago_long = "-87.63719"
 
-  tags = ['devbootcamp']
   coordinate_tags = ['ruby', 'rails', 'dbc', 'javascript'] #implement in the future
+
+  def tags
+    ['devbootcamp']
+  end
 
   def instagram_ids
     [DBCSF_instagram_id, DBCChicago_instagram_id]
@@ -40,13 +43,18 @@ module InstagramAPI
   def tags_search
     tags.each do |tag|
       Instagram.tag_recent_media(tag).each do |obj|
-        instagram_resource.posts.create( caption: obj.caption.text,
+        instagram_resource.posts.create( caption: caption(obj),
           media_type: 'photo',
           posted_at: DateTime.strptime(obj.created_time, '%s'),
           url: obj.images.standard_resolution.url
           )
       end
     end
+  end
+
+  def get_instagrams
+    dbc_location_search
+    tags_search
   end
 end
 
