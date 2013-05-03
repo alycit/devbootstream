@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(:version => 20130503175906) do
   add_index "boots", ["cohort_id"], :name => "index_boots_on_cohort_id"
 
   create_table "cohorts", :force => true do |t|
-    t.string   "name",       :null => false
-    t.date     "start_date", :null => false
-    t.date     "end_date",   :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "name",               :null => false
+    t.date     "start_date",         :null => false
+    t.integer  "socrates_cohort_id", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "posts", :force => true do |t|
