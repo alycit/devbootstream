@@ -21,7 +21,7 @@ CSV.foreach('db/bootseed.csv', :headers => true) do |row|
 
    twitter = boot.resources.new(
 
-     :identifier => row['twitter'],
+   :identifier => row['twitter'],
 	 :source => 'twitter',
 	 :user_name => row['name']  	
 
@@ -31,17 +31,17 @@ CSV.foreach('db/bootseed.csv', :headers => true) do |row|
 
   end
   
-  if row['tumblr'] 
-    
+  if row['blog']
+
    tumblr = boot.resources.new(
 
-     :identifier => row['blog'],
-	 :source => 'tumblr',
-	 :user_name => row['name']    
+   :identifier => row['blog'],
+   :source => 'tumblr',
+   :user_name => row['name']    
 
-   	) 	
-	
-	tumblr.save
+    )
+
+    tumblr.save
 
   end
   
