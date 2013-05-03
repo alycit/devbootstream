@@ -1,4 +1,5 @@
 class Resource < ActiveRecord::Base
-  attr_accessible :entry
+  belongs_to :boot
   has_many :posts
+  attr_accessible :identifier, :profile_pic_url, :source, :user_name
 end

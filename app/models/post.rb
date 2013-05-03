@@ -1,4 +1,4 @@
 class Post < ActiveRecord::Base
-  attr_accessible :blob#, :body
   belongs_to :resource
+  attr_accessible :body, :media_type, :posted_at, :title, :url
 end
