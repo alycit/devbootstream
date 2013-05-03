@@ -11,7 +11,8 @@ class TumblrWorker
       data = client.posts(resource.identifier)
 
       data["posts"].each do |post|
-        
+        #todo: need to account for repeat posts and new posts, but will have 
+        #to wait for agreed validation
         resource.posts.create(
           :media_type=>post["type"],
           :url=>post["url"],
