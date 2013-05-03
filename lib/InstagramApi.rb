@@ -1,5 +1,6 @@
 module InstagramAPI
   extend self
+
   access_token = "357627834.3bdcc20.299991d0a5b24034bae7bc68f189e6a0"
 
   def client 
@@ -14,6 +15,7 @@ module InstagramAPI
     Resource.find(2).posts.create(title: t.full_name, media_type: 'photo', posted_at: DateTime.now )
   end
 #find(2) = "find_by_username(username)..."
+
 def geolocation_search
   Instagram.media_search(DBCSF_lat, DBCSF_long).each do |obj|
     Resource.find(2).posts.create( caption: obj.caption.text,
@@ -34,4 +36,5 @@ def user_media(id)
 end
 
 end
+
 
