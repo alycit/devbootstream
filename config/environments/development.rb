@@ -1,11 +1,13 @@
 Bootstream::Application.configure do
 
-  # FACEBOOK_CONFIG = YAML.load_file("#{::Rails.root}/config/facebook.yml")
+  FACEBOOK_CONFIG = YAML.load_file("#{::Rails.root}/config/facebook.yml")
 
-  # ENV['FACEBOOK_APP_ID'] = FACEBOOK_CONFIG['app_id']
-  # ENV['FACEBOOK_SECRET'] = FACEBOOK_CONFIG['secret']
+  ENV['FACEBOOK_APP_ID'] = FACEBOOK_CONFIG['app_id']
+  ENV['FACEBOOK_SECRET'] = FACEBOOK_CONFIG['secret']
+
   TUMBLR_CONFIG = YAML.load_file("#{::Rails.root}/config/tumblr.yml")
   ENV['TUMBLR_KEY'] = TUMBLR_CONFIG['secret'] 
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on

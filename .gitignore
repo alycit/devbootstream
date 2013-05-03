@@ -15,4 +15,10 @@
 /tmp
 
 config/facebook.yml
+
+.DS_Store
+
+db/bootseed.csv
+
 config/tumblr.yml
+
