@@ -8,19 +8,19 @@ class TumblrWorker
 
     resources.each do |resource|
       puts resource.identifier
-      # data = client.posts(resource.identifier)
+      data = client.posts(resource.identifier)
 
-      # data["posts"].each do |post|
+      data["posts"].each do |post|
+        
+        resource.posts.create(
+          :media_type=>post["type"],
+          :url=>post["url"],
+          :body=>post["body"],
+          :title=>post["title"],
+          :posted_at => DateTime.strptime(post["timestamp"].to_s,"%s")
+        )
 
-      #   resource.posts.create(
-      #     :media_type=>post["type"],
-      #     :url=>post["url"],
-      #     :body=>post["body"],
-      #     :title=>post["title"],
-      #     :posted_at => post["timestamp"]
-      #   )
-
-      # end
+      end
     end
 
   end
