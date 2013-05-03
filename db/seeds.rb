@@ -18,3 +18,6 @@ wayne = golden_bears.boots.create(name: "Wayne Yang", socrates_id: 666 )
 ####### Resources #####
 wayne.resources.create(source: "instagram", identifier: 357627834, user_name: "waysidekoi")
 
+
+####### Creating 'Instagram' Resource #######
+Resource.create(source: 'instagram', user_name: 'public')
