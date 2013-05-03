@@ -11,7 +11,50 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130502224851) do
+ActiveRecord::Schema.define(:version => 20130503031447) do
+
+  create_table "boots", :force => true do |t|
+    t.string   "name",        :null => false
+    t.integer  "socrates_id", :null => false
+    t.integer  "cohort_id",   :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "boots", ["cohort_id"], :name => "index_boots_on_cohort_id"
+
+  create_table "cohorts", :force => true do |t|
+    t.string   "name",       :null => false
+    t.date     "start_date", :null => false
+    t.date     "end_date",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "url"
+    t.string   "title"
+    t.text     "body"
+    t.string   "media_type",  :null => false
+    t.integer  "resource_id", :null => false
+    t.datetime "posted_at",   :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "posts", ["resource_id"], :name => "index_posts_on_resource_id"
+
+  create_table "resources", :force => true do |t|
+    t.integer  "boot_id"
+    t.integer  "identifier",      :null => false
+    t.string   "user_name",       :null => false
+    t.string   "source",          :null => false
+    t.string   "profile_pic_url"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "resources", ["boot_id"], :name => "index_resources_on_boot_id"
 
   create_table "users", :force => true do |t|
     t.string   "provider"
