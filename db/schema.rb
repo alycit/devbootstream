@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130502224851) do
+ActiveRecord::Schema.define(:version => 20130502233801) do
+
+  create_table "posts", :force => true do |t|
+    t.text     "blob"
+    t.integer  "resource_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "resources", :force => true do |t|
+    t.string   "entry"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "provider"
