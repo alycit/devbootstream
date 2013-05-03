@@ -33,9 +33,11 @@ CSV.foreach('db/bootseed.csv', :headers => true) do |row|
   
   if row['blog']
 
+   stripped_http = row['blog'].gsub(/(http:\/\/|https:\/\/)/, '' )  
+
    tumblr = boot.resources.new(
 
-   :identifier => row['blog'],
+   :identifier => stripped_http,
    :source => 'tumblr',
    :user_name => row['name']    
 
