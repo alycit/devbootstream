@@ -1,6 +1,6 @@
 class UpdateCohorts < ActiveRecord::Migration
   def up
-  	add_column :cohorts, :socrates_cohort_id, :integer
+  	add_column :cohorts, :socrates_cohort_id, :integer, :null=>false
   	remove_column :cohorts, :end_date
   end
 
