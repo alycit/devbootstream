@@ -17,7 +17,8 @@ class TumblrWorker
           :url=>post["url"],
           :body=>post["body"],
           :title=>post["title"],
-          :posted_at => DateTime.strptime(post["timestamp"].to_s,"%s")
+          :posted_at => DateTime.strptime(post["timestamp"].to_s,"%s"),
+          :data => post
         )
 
       end
