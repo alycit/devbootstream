@@ -3,13 +3,25 @@ class TumblrWorker
  sidekiq_options :retry=>false
 
   def perform
-    resource = Resource.first
+    resources = Resource.all
     client = Tumblr::Client.new
-    posts = client.posts(resource.entry)
 
-    posts["posts"].each do |post|
-      resource.posts.create(:blob=>post)
+    resources.each do |resource|
+      puts resource.identifier
+      # data = client.posts(resource.identifier)
+
+      # data["posts"].each do |post|
+
+      #   resource.posts.create(
+      #     :media_type=>post["type"],
+      #     :url=>post["url"],
+      #     :body=>post["body"],
+      #     :title=>post["title"],
+      #     :posted_at => post["timestamp"]
+      #   )
+
+      # end
     end
-    puts 'Doing hard workwww'
+
   end
 end
