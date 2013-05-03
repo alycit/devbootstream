@@ -5,7 +5,7 @@ class Boot < ActiveRecord::Base
   attr_accessible :name, :socrates_id, :cohort_id
   #todo DO NOT INCLUDE CHORHOT ID
   validates :name, :socrates_id, 
-    :unique=>true, 
+    :uniqueness=>true, 
     :presence=>true
 
 end
