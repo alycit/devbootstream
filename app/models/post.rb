@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
   belongs_to :resource
-  attr_accessible :body, :media_type, :posted_at, :title, :url
+  serialize :data, JSON
+  attr_accessible :body, :media_type, :posted_at, :title, :url, :data
 end
