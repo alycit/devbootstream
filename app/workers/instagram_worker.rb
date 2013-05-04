@@ -1,4 +1,4 @@
-require_relative "../../lib/InstagramAPI"
+require_relative "../../lib/InstagramApi"
 
 class InstagramWorker
   include Sidekiq::Worker
