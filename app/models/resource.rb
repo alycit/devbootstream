@@ -4,5 +4,7 @@ class Resource < ActiveRecord::Base
   has_many :posts
   attr_accessible :identifier, :profile_pic_url, :source, :user_name
 
+  scope :tumblr, where(:source => "tumblr")
+
   validates :source, :presence=>true
 end

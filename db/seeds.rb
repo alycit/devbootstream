@@ -31,20 +31,19 @@ CSV.foreach('db/bootseed.csv', :headers => true) do |row|
 
   end
   
-  if row['blog']
+  if row['blog'] =~ /(\w+.tumblr.com)/
+    unless row['blog'].include?("www.")
+     stripped_http = row['blog'].match(/(\w+.tumblr.com)/).to_a.first
+     tumblr = boot.resources.new(
 
-   stripped_http = row['blog'].gsub(/(http:\/\/|https:\/\/)/, '' )  
+     :identifier => stripped_http,
+     :source => 'tumblr',
+     :user_name => row['name']    
 
-   tumblr = boot.resources.new(
+      )
 
-   :identifier => stripped_http,
-   :source => 'tumblr',
-   :user_name => row['name']    
-
-    )
-
-    tumblr.save
-
+      tumblr.save
+    end
   end
   
   unless Cohort.find_by_socrates_cohort_id(row['cohort_id'])
