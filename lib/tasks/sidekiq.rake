@@ -1,5 +1,5 @@
 namespace :sidekiq do
-  desc "tumblr test"
+  desc "tumblr task"
   task :start do 
     TumblrWorker.perform_async
   end
