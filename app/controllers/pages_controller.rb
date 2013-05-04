@@ -8,11 +8,9 @@ class PagesController < ApplicationController
     # InstagramAPI.dbc_location_search
 
     # InstagramAPI.get_instagrams
-
-    @posts = Post.all(:limit => 50)
-    render :index
+    @posts = Post.order("posted_at DESC").limit(50)
   end
-
+    
   def search
     @posts = Post.basic_search(body: params[:q]).limit(10)
     render :index
