@@ -9,8 +9,10 @@ class PagesController < ApplicationController
 
     # InstagramAPI.get_instagrams
 
-    @posts = Post.all(:limit => 50)
+    @posts = Post.order("posted_at DESC").limit(50)
     
+
+
   end
 
 end
