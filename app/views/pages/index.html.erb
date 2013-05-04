@@ -11,15 +11,15 @@
   <% source = post.resource.source %>
 
   <% if source == 'tumblr' %>
-    Source: tumblr <br /><%= render 'shared/tumblr' %>
+    <%= render 'shared/tumblr' %>
   <% end %>
 
   <% if source == 'twitter' %>
-    Source: twitter <br /><%= render 'shared/twitter' %>
+    <%= render 'shared/twitter' %>
   <% end %>
 
   <% if source == 'instagram' %>
-    Source: instagram <br /><%= render 'shared/instagram' %>
+    <%= render 'shared/instagram' %>
   <% end %>
 
 <hr>

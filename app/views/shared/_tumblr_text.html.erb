@@ -1,2 +1,13 @@
 
-Type: text
+
+<div class="media well">
+  <a href="http://<%= @post.resource.identifier %>" class="pull-left">
+    <img src="http://lorempixel.com/64/64/" class="media-object" alt='' />
+     
+    </a>
+    <b><%= @post.data["blog_name"] %></b>
+    <div class="media-body">
+      <h4 class="media-heading"><%= @post.title %></h4>
+      <%= raw(@post.body) %> 
+</div>
+</div>
