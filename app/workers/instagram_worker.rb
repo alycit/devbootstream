@@ -1,12 +1,11 @@
 require_relative "../../lib/InstagramAPI"
 
-class PagesController < ApplicationController
+class InstagramWorker
+  include Sidekiq::Worker
   include InstagramAPI
+  sidekiq_options :retry => false
 
-  def index
+  def perform
     InstagramAPI.get_instagrams
-
-    @posts = Post.all
   end
-
 end
