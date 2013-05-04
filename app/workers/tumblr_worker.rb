@@ -22,7 +22,7 @@ class TumblrWorker
           resource.posts.new(
             :media_type=>post["type"],
             :url=>post["url"],
-            :body=>post["body"],
+            :body=>ActionController::Base.helpers.strip_tags(post["body"]),
             :title=>post["title"],
             :posted_at => DateTime.strptime(post["timestamp"].to_s,"%s"),
             :data => post
