@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 
     # InstagramAPI.dbc_location_search
 
-    InstagramAPI.get_instagrams
+    # InstagramAPI.get_instagrams
 
     @posts = Post.all(:limit => 50)
     
