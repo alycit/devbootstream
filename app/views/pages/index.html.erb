@@ -1,9 +1,37 @@
-<% @posts.each do |p| %>
-<img src=<%= p.url %>>
-<% end %>
+
 
 <% if flash[:notice] %>
     <div id="notice"><%= flash[:notice] %></div>
 <% end %>
 
-hi
+<hr>
+<% @posts.each do |post| %>
+
+  <% @post = post %>
+  <% source = post.resource.source %>
+
+  <% if source == 'tumblr' %>
+    Source: tumblr <br /><%= render 'shared/tumblr' %>
+  <% end %>
+
+  <% if source == 'twitter' %>
+    Source: twitter <br /><%= render 'shared/twitter' %>
+  <% end %>
+
+  <% if source == 'instagram' %>
+    Source: instagram <br /><%= render 'shared/instagram' %>
+  <% end %>
+
+<hr>
+
+<% end %>    
+
+
+
+
+
+
+
+
+
+

@@ -1,12 +1,13 @@
-require_relative "../../lib/InstagramAPI"
+# require_relative "../../lib/InstagramAPI"
 
 class PagesController < ApplicationController
-  include InstagramAPI
+  # include InstagramAPI
 
   def index
-    InstagramAPI.dbc_location_search
+    # InstagramAPI.dbc_location_search
 
-    @posts = Post.all
+    @posts = Post.all(:limit => 50)
+    
   end
 
 end
