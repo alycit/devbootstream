@@ -232,11 +232,8 @@ DEPENDENCIES
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)
   sidekiq
-<<<<<<< HEAD
   textacular (~> 3.0)
-=======
   therubyracer
->>>>>>> master
   tumblr_client
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
