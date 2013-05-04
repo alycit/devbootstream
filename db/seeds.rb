@@ -72,5 +72,3 @@ puts "Resources added: #{Resource.all.length}"
 puts "Cohorts added: #{Cohort.all.length}"
 puts "Instagram public resource created: #{instagram}"
 
-
-
