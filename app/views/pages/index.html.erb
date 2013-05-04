@@ -11,7 +11,7 @@
   <% source = post.resource.source %>
 
   <% if source == 'tumblr' %>
-    Source: tumblr <br /><%= render 'shared/tumblr' %>
+    Source: tumblr <br /><%=post.inspect%><%# render 'shared/tumblr' %>
   <% end %>
 
   <% if source == 'twitter' %>

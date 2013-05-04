@@ -28,6 +28,7 @@ gem 'redis'
 gem 'whenever'
 gem 'activerecord-postgres-hstore'
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
+gem 'faker'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.0"

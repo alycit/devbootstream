@@ -10,7 +10,12 @@ class PagesController < ApplicationController
     # InstagramAPI.get_instagrams
 
     @posts = Post.all(:limit => 50)
-    
+    render :index
+  end
+
+  def search
+    @posts = Post.basic_search(body: params[:q]).limit(10)
+    render :index
   end
 
 end
