@@ -7,20 +7,39 @@
 <hr>
 <% @posts.each do |post| %>
 
-  <% @post = post %>
-  <% source = post.resource.source %>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
 
-  <% if source == 'tumblr' %>
-    <%= render 'shared/tumblr' %>
-  <% end %>
 
-  <% if source == 'twitter' %>
-    <%= render 'shared/twitter' %>
-  <% end %>
+        <%= image_tag("#{post.resource.source}.png", :size => "40x40") %>&nbsp;&nbsp;
 
-  <% if source == 'instagram' %>
-    <%= render 'shared/instagram' %>
-  <% end %>
+        Posted <%= time_ago_in_words(post.posted_at)%> ago by
+      
+        <b><% if post.resource.boot.name %><%= post.resource.boot.name %><% end %></b>, 
+      
+        <%= post.resource.boot.cohort.name %>
+        
+        <span class="original_post"><%= link_to 'original post', post.data["post_url"] %></span>
+
+        <% @post = post %>
+        <% source = @post.resource.source %>
+
+        <% if source == 'tumblr' %>
+          <%= render 'shared/tumblr' %>
+        <% end %>
+
+        <% if source == 'twitter' %>
+          <%= render 'shared/twitter' %>
+        <% end %>
+
+        <% if source == 'instagram' %>
+          <%= render 'shared/instagram' %>
+        <% end %>
+
+    </div>
+  </div>
+</div>
 
 <hr>
 

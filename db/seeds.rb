@@ -11,7 +11,7 @@ CSV.foreach('db/bootseed.csv', :headers => true) do |row|
 
     :name => row['name'], 
     :socrates_id => row['socrates_id'],
-    :cohort_id => row['cohort_id'],
+    :socrates_cohort_id => row['socrates_cohort_id'],
 
     )
 
@@ -46,12 +46,12 @@ CSV.foreach('db/bootseed.csv', :headers => true) do |row|
     end
   end
   
-  unless Cohort.find_by_socrates_cohort_id(row['cohort_id'])
+  unless Cohort.find_by_socrates_cohort_id(row['socrates_cohort_id'])
 
     cohort = Cohort.new(
 
 	 :name => row['cohort_name'], 
-	 :socrates_cohort_id => row['cohort_id'],
+	 :socrates_cohort_id => row['socrates_cohort_id'],
 	 :start_date => row['start_date']
 
     )
