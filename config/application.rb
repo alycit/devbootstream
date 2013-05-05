@@ -67,5 +67,8 @@ module Bootstream
 
     # We need to set the schema format to sql due to the use of full text search
     config.active_record.schema_format = :sql
+
+    #Heroku specific configuration to keep precompile to pass.#http://www.simonecarletti.com/blog/2012/02/heroku-and-rails-3-2-assetprecompile-error/
+    config.assets.initialize_on_precompile = false
   end
 end
