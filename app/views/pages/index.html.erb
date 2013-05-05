@@ -2,4 +2,34 @@
     <div id="notice"><%= flash[:notice] %></div>
 <% end %>
 
-hi
+<hr>
+<% @posts.each do |post| %>
+
+  <% @post = post %>
+  <% source = post.resource.source %>
+
+  <% if source == 'tumblr' %>
+    <%= render 'shared/tumblr' %>
+  <% end %>
+
+  <% if source == 'twitter' %>
+    <%= render 'shared/twitter' %>
+  <% end %>
+
+  <% if source == 'instagram' %>
+    <%= render 'shared/instagram' %>
+  <% end %>
+
+<hr>
+
+<% end %>    
+
+
+
+
+
+
+
+
+
+

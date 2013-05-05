@@ -1,0 +1,21 @@
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12"><%= image_tag("#{@post.resource.source}.png", :size => "40x40") %>&nbsp;&nbsp;Posted <%= time_ago_in_words(@post.posted_at)%> ago by (instagram user name)
+        <span class="original_post"><%= link_to 'original post', @post.url %></span>
+			
+<div class="media well">
+  <a href="#" class="pull-left">
+    <img src="http://lorempixel.com/64/64/" class="media-object" alt='' /></a>
+    <div class="media-body">
+      <h4 class="media-heading"><%= @post.title %></h4>
+      <%= image_tag @post.url %>
+	</div>
+</div>
+
+
+		</div>
+	</div>
+</div>
+
+

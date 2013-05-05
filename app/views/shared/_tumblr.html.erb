@@ -1,0 +1,56 @@
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12"><%= image_tag("#{@post.resource.source}.png", :size => "40x40") %>&nbsp;&nbsp;Posted <%= time_ago_in_words(@post.posted_at)%> ago by
+			<b><%= @post.resource.boot.name %></b>, 
+			Golden Bears 2013, San Francisco
+			<span class="original_post"><%= link_to 'original post', @post.data["post_url"] %></span>
+
+
+<% if @post.media_type == 'text' %>
+
+  <%= render 'shared/tumblr_text' %>
+
+<% else if @post.media_type == 'photo' %>
+
+  <%= render 'shared/tumblr_photo' %>
+
+<% else if @post.media_type == 'quote' %>
+
+  <%= render 'shared/tumblr_quote' %>
+
+<% else if @post.media_type == 'link' %>
+
+  <%= render 'shared/tumblr_link' %>
+
+<% else if @post.media_type == 'chat' %>
+
+  <%= render 'shared/tumblr_chat' %>
+
+<% else if @post.media_type == 'audio' %>
+
+  <%= render 'shared/tumblr_audio' %>
+
+<% else if @post.media_type == 'video' %>
+
+  <%= render 'shared/tumblr_video' %>
+
+<% else %>  
+
+<% end %>
+<% end %>
+<% end %>
+<% end %>
+<% end %>
+<% end %>
+<% end %>
+
+
+
+
+			
+		</div>
+	</div>
+</div>
+
+

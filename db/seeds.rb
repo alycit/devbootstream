@@ -76,6 +76,14 @@ CSV.foreach('db/bootseed.csv', :headers => true) do |row|
 end
 end
 
+instagram = Resource.new(:user_name => 'public', :source => 'instagram')
+instagram.save
+
+twitter = Resource.new(:user_name => 'public', :source => 'twitter')
+twitter.save
+
 puts "Boots added: #{Boot.all.length}"
 puts "Resources added: #{Resource.all.length}"
 puts "Cohorts added: #{Cohort.all.length}"
+puts "Instagram public resource created: #{instagram}"
+
