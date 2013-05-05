@@ -15,14 +15,12 @@ class TumblrWorker
         data = client.posts(resource.identifier)
         break if data["status"] == 404
         offset = data["posts"].length
-  
-        author = resource.boot.name.to_s
-        cohort = resource.boot.cohort.name.to_s
-  
+        author = data["blog"]["name"]
+        author = author << " " << resource.boot.name unless resource.boot.nil?
         save = false
 
         data["posts"].each do |post|
-          body = "#{author} #{cohort} #{ActionController::Base.helpers.strip_tags(post["body"])}"
+          body = "#{author} #{ActionController::Base.helpers.strip_tags(post["body"])}"
           resource.posts.new(
             :media_type=>post["type"],
             :url=>post["url"],
