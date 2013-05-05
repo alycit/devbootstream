@@ -166,6 +166,7 @@ GEM
       multi_json
       redis (>= 3.0)
       redis-namespace
+    simple_oauth (0.2.0)
     slop (3.4.4)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -183,6 +184,10 @@ GEM
       faraday_middleware (>= 0.8)
       json
       oauth
+    twitter (4.5.0)
+      faraday (~> 0.8, < 0.10)
+      multi_json (~> 1.0)
+      simple_oauth (~> 0.2)
     tzinfo (0.3.37)
     uglifier (2.0.1)
       execjs (>= 0.3.0)
@@ -211,5 +216,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sidekiq
   tumblr_client
+  twitter
   uglifier (>= 1.0.3)
   whenever
