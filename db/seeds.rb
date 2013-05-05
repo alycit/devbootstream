@@ -18,7 +18,7 @@ Cohort.destroy_all
 
 
 CSV.foreach('db/bootseed.csv', :headers => true) do |row|
-
+  sleep(5)
   boot = Boot.new(
 
     :name => row['name'], 
@@ -31,13 +31,11 @@ CSV.foreach('db/bootseed.csv', :headers => true) do |row|
 
   if row['twitter']
     puts "Working on #{row['twitter']}"
-    #FIX THIS SILLY IF BELOW
-    # stripped_http = stripped_http[2] if stripped_http
     if cleanse_http(row['twitter'])
       twitter = boot.resources.new(
        :identifier => cleanse_http(row['twitter']),
        :source => 'twitter',
-       :user_name => row['name']  	
+       :user_name => row['name']    
        )
 
       twitter.save
@@ -86,4 +84,3 @@ puts "Boots added: #{Boot.all.length}"
 puts "Resources added: #{Resource.all.length}"
 puts "Cohorts added: #{Cohort.all.length}"
 puts "Instagram public resource created: #{instagram}"
-
