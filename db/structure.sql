@@ -143,7 +143,8 @@ CREATE TABLE resources (
     source character varying(255) NOT NULL,
     profile_pic_url character varying(255),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    identifier_id integer
 );
 
 
@@ -352,3 +353,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130503230011');
 INSERT INTO schema_migrations (version) VALUES ('20130504200854');
 
 INSERT INTO schema_migrations (version) VALUES ('20130505070621');
+
+INSERT INTO schema_migrations (version) VALUES ('20130505175458');

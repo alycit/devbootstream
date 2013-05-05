@@ -1,4 +1,4 @@
-module InstagramAPI
+module InstagramApi
   extend self
 
   DBCSF_instagram_id = 16169461
@@ -30,10 +30,13 @@ module InstagramAPI
   def dbc_location_search
     instagram_ids.each do |id|
       Instagram.location_recent_media(id).each do |obj|
+        puts obj
         instagram_resource.posts.create( caption: caption(obj),
           media_type: 'photo',
           posted_at: DateTime.strptime(obj.created_time, '%s'),
-          url: obj.images.standard_resolution.url
+          body: obj.images.standard_resolution.url, 
+          url: obj.link,
+          data: obj
           )
       end
 
@@ -46,7 +49,9 @@ module InstagramAPI
         instagram_resource.posts.create( caption: caption(obj),
           media_type: 'photo',
           posted_at: DateTime.strptime(obj.created_time, '%s'),
-          url: obj.images.standard_resolution.url
+          body: obj.images.standard_resolution.url,
+          url: obj.link,
+          instagram_poster: obj
           )
       end
     end

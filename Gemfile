@@ -8,6 +8,8 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'omniauth-facebook'
 gem 'instagram'
+gem 'twitter'
+gem 'tweetstream'
 # gem 'time-ago-in-words'
 
 # Gems used only for assets and not required
