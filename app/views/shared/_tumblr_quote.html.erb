@@ -1,2 +1,15 @@
 
-(this is a tumblr quote post)
+<div class="media well">
+
+  <a href="http://<%= @post.resource.identifier %>" class="pull-left">
+    <%= image_tag(@post.resource.profile_pic_url, :size => "64x64") %></a>
+
+    <b><%= @post.data["blog_name"] %></b>
+    <div class="media-body">
+      <blockquote>
+      	<p><%= @post.data['text'] %></p>
+        <small><cite><%= raw(@post.data['source']) %></cite></small>
+      </blockquote>
+    </div>		 	
+
+</div>

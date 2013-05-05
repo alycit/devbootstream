@@ -4,25 +4,29 @@
     <div id="notice"><%= flash[:notice] %></div>
 <% end %>
 
+
+
 <hr>
 <% @posts.each do |post| %>
 
   <div class="container-fluid">
     <div class="row-fluid">
       <div class="span12">
-
-
-        <%= image_tag("#{post.resource.source}.png", :size => "40x40") %>&nbsp;&nbsp;
-
-        Posted <%= time_ago_in_words(post.posted_at)%> ago by
-      
-        <b><% if post.resource.boot.name %><%= post.resource.boot.name %><% end %></b>, 
-      
-        <%= post.resource.boot.cohort.name %>
-        
-        <span class="original_post"><%= link_to 'original post', post.data["post_url"] %></span>
-
         <% @post = post %>
+
+        <%= image_tag("#{@post.resource.source}.png", :size => "40x40") %>&nbsp;&nbsp;
+
+
+        Posted <%= time_ago_in_words(@post.posted_at)%> ago by
+      
+
+        <b><%= @post.resource.boot.try(:name) %></b>, 
+      
+        <% cohort = @post.resource.boot.try(:cohort) %>
+        <%= cohort.try(:name) %>
+        
+        <span class="original_post"><%= link_to 'original post', '' %></span>
+
         <% source = @post.resource.source %>
 
         <% if source == 'tumblr' %>
