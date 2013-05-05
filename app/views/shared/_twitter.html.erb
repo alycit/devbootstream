@@ -1,3 +1,19 @@
+<%= image_tag("#{@post.resource.source}.png", :size => "40x40") %>&nbsp;&nbsp;Posted <%= time_ago_in_words(@post.posted_at)%> ago by
+			<b><%= @post.resource.boot.name %></b>, 
+			Golden Bears 2013, San Francisco
+					<span class="original_post"><%= link_to 'original post', @post.url %></span>
+
+<div class="media well">
+  <a href="#" class="pull-left">
+    <img src="http://dummyimage.com/64x64&text=avatar" class="media-object" alt='' /></a>
+    <div class="media-body">
+      <h4 class="media-heading"></h4>
+      <b><%= @post.resource.user_name %></b>
+      <br>
+      <%= @post.title %>
+	</div>
+</div>
 
 
-Type: tweet
+
+

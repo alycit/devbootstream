@@ -1,11 +1,7 @@
 
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="span12"><%= image_tag("#{@post.resource.source}.png", :size => "40x40") %>&nbsp;&nbsp;Posted <%= time_ago_in_words(@post.posted_at)%> ago by
-			<b><%= @post.resource.boot.name %></b>, 
-			Golden Bears 2013, San Francisco
-			<span class="original_post"><%= link_to 'original post', @post.data["post_url"] %></span>
 
+
+<% render :partial => "shared/#{@post.resource.source}/#{post.media_type}"}
 
 <% if @post.media_type == 'text' %>
 
@@ -44,13 +40,5 @@
 <% end %>
 <% end %>
 <% end %>
-
-
-
-
-			
-		</div>
-	</div>
-</div>
 
 

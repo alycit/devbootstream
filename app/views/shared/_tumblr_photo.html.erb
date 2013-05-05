@@ -1,13 +1,12 @@
 
 <div class="media well">
   <a href="#" class="pull-left">
-    <img src="http://lorempixel.com/64/64/" class="media-object" alt='' /></a>
+    <img src="http://dummyimage.com/64x64&text=avatar" class="media-object" alt='' /></a>
     <div class="media-body">
-      <h4 class="media-heading"><%= @post.title %></h4>
-      <%= @post.data["blog_name"] %>
-      <%= @post.data["post_url"] %>
-   title: <%= @post.data["title"] %>
-   cpation<%= @post.data["photos"][0]["caption"] %> 
+      <h4 class="media-heading">
+       </h4>
+
+   
       <%= image_tag @post.data["photos"][0]["alt_sizes"][0]["url"] %> 
 	</div>
 </div>

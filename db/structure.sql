@@ -36,7 +36,7 @@ CREATE TABLE boots (
     id integer NOT NULL,
     name character varying(255) NOT NULL,
     socrates_id integer NOT NULL,
-    cohort_id integer NOT NULL,
+    socrates_cohort_id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -290,7 +290,7 @@ ALTER TABLE ONLY users
 -- Name: index_boots_on_cohort_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_boots_on_cohort_id ON boots USING btree (cohort_id);
+CREATE INDEX index_boots_on_cohort_id ON boots USING btree (socrates_cohort_id);
 
 
 --
@@ -351,5 +351,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130503181109');
 INSERT INTO schema_migrations (version) VALUES ('20130503230011');
 
 INSERT INTO schema_migrations (version) VALUES ('20130504200854');
+
+INSERT INTO schema_migrations (version) VALUES ('20130505070621');
 
 INSERT INTO schema_migrations (version) VALUES ('20130505175458');
