@@ -1,4 +1,7 @@
+require 'textacular/searchable'
 class Post < ActiveRecord::Base
+  extend Searchable(:title, :body)
+  
   belongs_to :resource
   serialize :data, JSON
   attr_accessible :body, :media_type, :posted_at, :title, :url, :data, :caption, :instagram_poster
