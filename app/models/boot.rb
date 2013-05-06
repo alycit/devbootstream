@@ -8,15 +8,15 @@ class Boot < ActiveRecord::Base
     :uniqueness=>true, 
     :presence=>true
 
-  def current_phase
-    week_number = self.current_week
+  def current_phase(when_date=Date.today)
+    week_number = self.current_week(when_date)
     (week_number/3.0).ceil
   end
 
-  def current_week
+  def current_week(when_date=Date.today)
+    # debugger
     start_date = cohort.start_date
-    current_date = Date.today
-    days_past = (current_date - start_date).to_f
+    days_past = (when_date.to_date - start_date).to_f
     week_number = (days_past/7).ceil
     week_number = 0 if week_number < 1
     week_number = 13 if week_number > 12
