@@ -1,6 +1,6 @@
 class TestingController < ApplicationController
   def test
-    params["hub.challenge"], :status=>200
+    params["hub.challenge"]
   end
 
   def verification
