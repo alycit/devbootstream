@@ -1,8 +1,5 @@
 namespace :sidekiq do
 
-include TwitterApi
-include InstagramApi
-
   desc "tumblr test"
   task :start => :environment do
     TumblrWorker.perform_async
