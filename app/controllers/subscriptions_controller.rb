@@ -1,6 +1,7 @@
 class SubscriptionsController < ApplicationController
   def create
-    InstagramApi.tags_search
+    Subscription.update(params)
+    render :nothing => true
   end
 
   def new
