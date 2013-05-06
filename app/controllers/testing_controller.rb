@@ -1,6 +1,6 @@
 class TestingController < ApplicationController
   def test
-    InstagramApi.tag_search
+    InstagramApi.tags_search
   end
 
   def verification
