@@ -1,9 +1,10 @@
 class TestingController < ApplicationController
   def test
-    render :text => params.inspect
+    
   end
 
   def verification
-    render :text => params["hub.challenge"]
+    # render :text => params["hub.challenge"]
+    InstagramApi.tags_search
   end
 end
