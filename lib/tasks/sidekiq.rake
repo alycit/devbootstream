@@ -1,6 +1,3 @@
-require_relative '../../lib/TwitterApi'
-require_relative '../../lib/InstagramApi'
-
 namespace :sidekiq do
 
 include TwitterApi
