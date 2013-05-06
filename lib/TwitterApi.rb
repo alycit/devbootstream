@@ -20,9 +20,11 @@ module TwitterApi
 
   def create_tweet_post(resource, tweet)
     resource.posts.create(  url: build_tweet_url(tweet.user.screen_name, tweet.user.status.id),
-      body: tweet.text,
+      body: tweet.user.screen_name + " " + tweet.text,
       media_type: 'string',
-      posted_at: tweet.created_at)
+      posted_at: tweet.created_at,
+      data: tweet
+      )
   end
 
   def pause_api_calls?
@@ -48,12 +50,11 @@ module TwitterApi
   end
 
   def slow_initial_populate(resource)
-    sleep(0.25)
+    sleep(6)
     tweets = Twitter.user_timeline(resource.identifier, :count => 100, :max_id => resource.oldest_tweet_id)
     puts "Oldest_tweet_id is #{resource.oldest_tweet_id}"
     $api_calls += 1
     puts "api call #{$api_calls}"
-    # pause_api_calls?
     puts "Scraping #{resource.user_name}"
     if tweets.length > 1 && tweets.first.created_at > resource.boot.cohort.start_date - 30.days
       tweets.each do |tweet|
