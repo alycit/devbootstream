@@ -1,6 +1,6 @@
 class TestingController < ApplicationController
   def test
-    render :text => params["hub.challenge"], :status=>200
+    params["hub.challenge"], :status=>200
   end
 
   def verification
