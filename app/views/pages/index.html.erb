@@ -2,7 +2,13 @@
     <div id="notice"><%= flash[:notice] %></div>
 <% end %>
 
+<%= @posts.length %><br>
+<%= @params %><br><br>
 
+<%= @source %>
+
+
+<%= render 'shared/filter' %>
 
 <hr>
 <% @posts.each do |post| %>

@@ -17,6 +17,10 @@ class Post < ActiveRecord::Base
   alias_attribute :caption, :title
 
 
+  scope :tumblr, where(:resource_id => Resource.tumblr)
+  scope :twitter, where(:resource_id => Resource.twitter)
+
+
   after_create do |post|
     if post.resource.source == "twitter"
       update_twitter_profile_pic(post)
@@ -36,4 +40,5 @@ class Post < ActiveRecord::Base
       self.phase_id = boot.current_phase(self.posted_at)
     end
   end
+
 end
