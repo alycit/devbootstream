@@ -1,9 +1,9 @@
 class TestingController < ApplicationController
   def test
-    params["hub.challenge"]
+    render :text => params.inspect
   end
 
   def verification
-    render :text => params.inspect
+    params["hub.challenge"]
   end
 end
