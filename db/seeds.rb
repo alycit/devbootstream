@@ -15,6 +15,7 @@ end
 Boot.destroy_all
 Resource.destroy_all
 Cohort.destroy_all
+Post.destroy_all
 
 
 CSV.foreach('db/bootseed.csv', :headers => true) do |row|
