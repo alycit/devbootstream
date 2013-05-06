@@ -1,7 +1,6 @@
-class Subscription < ActiveRecord::Base
+class Subscription
   extend self
 
-  params["_json"][]
 end
 
 
