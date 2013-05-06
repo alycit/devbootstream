@@ -1,6 +1,6 @@
 class Subscription
   def self.update(params)
-    @id = params["_json"][0][subscription_id]
+    @id = params["_json"][0]["subscription_id"]
     case @id
     when 3160806
       puts "TAG SEARCHINGGGGGGGGGGGGGGGGG"
