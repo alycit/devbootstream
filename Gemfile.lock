@@ -138,6 +138,9 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pusher (0.11.3)
+      multi_json (~> 1.0)
+      signature (~> 0.1.6)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -193,6 +196,7 @@ GEM
       multi_json
       redis (>= 3.0)
       redis-namespace
+    signature (0.1.7)
     simple_oauth (0.2.0)
     slop (3.4.4)
     sprockets (2.2.2)
@@ -256,6 +260,7 @@ DEPENDENCIES
   omniauth-facebook
   pg
   pry
+  pusher
   rails (= 3.2.13)
   redis
   rspec-rails (~> 2.0)
