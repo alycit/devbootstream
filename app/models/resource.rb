@@ -41,11 +41,11 @@ class Resource < ActiveRecord::Base
     unless self.posts.empty?
       self.posts.pluck(:url).map { |f| f.match(/(status\/)(.+)/)[2].to_i }.min
     else
+      sleep(5)
       x = Twitter.user_timeline(self.identifier).first
       unless x.nil?
         x.user.status.id
       end
-      sleep(0.25)
     end
   end
 

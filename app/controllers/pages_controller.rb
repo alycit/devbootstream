@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
     
   def search
-    @posts = Post.basic_search(body: params[:q]).limit(10)
+    @posts = Post.search(params[:q]).limit(10)
     render :index
   end
 

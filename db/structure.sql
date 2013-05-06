@@ -108,7 +108,8 @@ CREATE TABLE posts (
     posted_at timestamp without time zone NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    data text
+    data text,
+    phase_id integer
 );
 
 
@@ -355,3 +356,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130504200854');
 INSERT INTO schema_migrations (version) VALUES ('20130505070621');
 
 INSERT INTO schema_migrations (version) VALUES ('20130505175458');
+
+INSERT INTO schema_migrations (version) VALUES ('20130506003830');
