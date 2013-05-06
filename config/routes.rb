@@ -1,11 +1,15 @@
 Bootstream::Application.routes.draw do
 
+  get "subscription/new"
+
+  get "subscription/create"
+
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
   match 'search', to: 'pages#search'
-  get 'instacallback', to: 'instagrams#new'
-  post 'instacallback', to: 'instagrams#create'
+  get 'instacallback', to: 'subscriptions#new'
+  post 'instacallback', to: 'subscriptions#create'
   root :to => "pages#index"
 
 
