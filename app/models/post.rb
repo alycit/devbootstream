@@ -11,4 +11,9 @@ class Post < ActiveRecord::Base
     :posted_at, :presence=>true
 
   alias_attribute :caption, :title
+
+  scope :tumblr, where(:resource_id => Resource.tumblr)
+  scope :twitter, where(:resource_id => Resource.twitter)
+
+
 end

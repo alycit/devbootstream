@@ -6,6 +6,7 @@ Bootstream::Application.routes.draw do
   match 'search', to: 'pages#search'
   root :to => "pages#index"
 
+  post "/filter" => "pages#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

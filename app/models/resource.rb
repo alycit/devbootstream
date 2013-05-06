@@ -5,8 +5,8 @@ class Resource < ActiveRecord::Base
   attr_accessible :identifier, :identifier_id, :profile_pic_url, :source, :user_name
 
   scope :tumblr, where(:source => "tumblr")
-  scope :twitter, where(:source => 'twitter')
-  scope :instagram, where(:source => 'instagram')
+  scope :twitter, where(:source => "twitter")
+  scope :instagram, where(:source => "instagram")
   validates :source, :presence=>true
 
   before_create do |resource|

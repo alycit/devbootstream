@@ -1,0 +1,40 @@
+
+<form action="filter" method="post">
+  <input type="submit" value="Apply Filter">
+<ul>
+
+    <li><b>Source</b></li>
+	<% @sources.each do |source| %> 
+
+	  <% if @source && @source.include?(source.source) %>	
+	  <li><%= check_box_tag 'source[]', source.source, true %> <%= source.source %></li>
+	  <% else %>
+      <li><%= check_box_tag 'source[]', source.source %> <%= source.source %></li>
+      <% end %>
+
+    <% end %>
+    <li></li>
+    
+    <li><b>Phase</b></li>
+	<% @phases.each do |phase| %> 
+      <li><%= check_box_tag 'phase[]', phase %> <%= phase %></li> 
+    <% end %>
+    <li></li>
+    
+    <li><b>Cohort</b></li>
+	<% @cohorts.each do |cohort| %> 
+      <li><%= check_box_tag 'cohort[]', cohort.id %> <%= cohort.name %></li> 
+    <% end %>
+    <li></li>
+
+    <li><b>Location</b></li>
+	<% @locations.each do |location| %> 
+      <li><input type="checkbox" name="<%= location %>" > <%= location %></li>
+    <% end %>
+
+</ul>
+
+
+
+</form>
+
