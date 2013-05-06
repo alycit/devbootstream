@@ -19,7 +19,7 @@ class Boot < ActiveRecord::Base
     days_past = (current_date - start_date).to_f
     week_number = (days_past/7).ceil
     week_number = 0 if week_number < 1
-    week_number = 12 if week_number > 12
+    week_number = 13 if week_number > 12
     week_number
   end
 
