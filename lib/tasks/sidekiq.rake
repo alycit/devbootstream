@@ -1,8 +1,10 @@
 require_relative '../../lib/TwitterApi'
+require_relative '../../lib/InstagramApi'
 
 namespace :sidekiq do
 
 include TwitterApi
+include InstagramApi
 
   desc "tumblr test"
   task :start => :environment do
@@ -24,4 +26,19 @@ include TwitterApi
   task :listen  => :environment do
     TwitterApi.update_new_tweets
   end
+
+  desc "populate database with current instagrams matching DBC id's and DBC geo-coordinates"
+  task :get_instagrams => :environment do
+    InstagramApi.get_instagrams
+  end
+
+  desc "initial DB populate for instagrams and twitters"
+  task :first_boot => :environment do
+    Resource.twitter.each do |twitter_resources|
+      TwitterApi.slow_initial_populate(twitter_resources)
+    end
+
+    InstagramApi.get_instagrams
+  end
+
 end

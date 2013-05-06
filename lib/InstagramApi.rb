@@ -9,7 +9,11 @@ module InstagramApi
   DBCChicago_lat = "41.889714"
   DBCChicago_long = "-87.63719"
 
-  coordinate_tags = ['ruby', 'rails', 'dbc', 'javascript'] #implement in the future
+  LOCATION_COORDINATES = { "SF" => ["37.792351477","-122.406151383"], "CHI" => ["41.889714","-87.63719"] }
+
+  def coordinate_tags
+    ['ruby', 'devbootcamp', 'rails', 'dbc', 'javascript']
+  end
 
   def tags
     ['devbootcamp']
@@ -27,6 +31,24 @@ module InstagramApi
     obj.caption.nil? ? "" : obj.caption.text
   end
 
+  def dbc_smart_coordinate_search
+    LOCATION_COORDINATES.each_value do |coordinate|
+      puts "Coordinates: #{coordinate}"
+      Instagram.media_search(coordinate[0],coordinate[1]).each do |obj|
+        puts "Obj: #{obj}"
+        unless (obj.tags & coordinate_tags).empty?
+          instagram_resource.posts.create( caption: caption(obj),
+           media_type: 'photo',
+           posted_at: DateTime.strptime(obj.created_time, '%s'),
+           body: obj.user.full_name + " " + obj.user.username + " " + caption(obj),
+           url: obj.url,
+           data: obj
+           )
+        end
+      end
+    end
+  end
+
   def dbc_location_search
     instagram_ids.each do |id|
       Instagram.location_recent_media(id).each do |obj|
@@ -34,7 +56,7 @@ module InstagramApi
         instagram_resource.posts.create( caption: caption(obj),
           media_type: 'photo',
           posted_at: DateTime.strptime(obj.created_time, '%s'),
-          body: obj.images.standard_resolution.url, 
+          body: obj.user.full_name + " " + obj.user.username + " " + caption(obj), 
           url: obj.link,
           data: obj
           )
@@ -49,9 +71,9 @@ module InstagramApi
         instagram_resource.posts.create( caption: caption(obj),
           media_type: 'photo',
           posted_at: DateTime.strptime(obj.created_time, '%s'),
-          body: obj.images.standard_resolution.url,
+          body: obj.user.full_name + " " + obj.user.username + " " + caption(obj),
           url: obj.link,
-          instagram_poster: obj
+          data: obj
           )
       end
     end
@@ -60,6 +82,7 @@ module InstagramApi
   def get_instagrams
     dbc_location_search
     tags_search
+    dbc_smart_coordinate_search
   end
 end
 
