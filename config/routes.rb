@@ -4,7 +4,7 @@ Bootstream::Application.routes.draw do
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
   match 'search', to: 'pages#search'
-
+  get 'test', to: 'testing#verification'
   post 'test', to: 'testing#test'
   root :to => "pages#index"
 
