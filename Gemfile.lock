@@ -114,6 +114,7 @@ GEM
     mime-types (1.23)
     multi_json (1.7.2)
     multipart-post (1.2.0)
+    newrelic_rpm (3.6.0.83)
     nyan-cat-formatter (0.5.0)
       rspec (>= 2.13)
     oauth (0.4.7)
@@ -256,6 +257,7 @@ DEPENDENCIES
   jquery-rails
   less
   less-rails
+  newrelic_rpm
   nyan-cat-formatter
   omniauth-facebook
   pg
