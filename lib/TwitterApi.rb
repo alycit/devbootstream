@@ -67,6 +67,7 @@ module TwitterApi
 
   # Deprecated -- using tweetstream
   # def get_new_tweets(resource)
+  #   sleep(6)
   #   tweets = Twitter.user_timeline(resource.identifier, :count => 100, :since_id => resource.newest_tweet_id)
 
   #   if tweets.length >= 1
