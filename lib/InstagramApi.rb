@@ -82,10 +82,4 @@ module InstagramApi
       end
     end
   end
-
-  # def get_instagrams
-  #   dbc_location_search
-  #   tags_search
-  #   dbc_smart_coordinate_search
-  # end
 end
