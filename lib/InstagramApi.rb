@@ -1,16 +1,6 @@
 module InstagramApi
   extend self
 
-  DBCSF_instagram_id = 16169461
-  DBCSF_lat = "37.792351477"
-  DBCSF_long = "-122.406151383"
-
-  DBCChicago_instagram_id = 68855928
-  DBCChicago_lat = "41.889714"
-  DBCChicago_long = "-87.63719"
-
-  LOCATION_COORDINATES = { "SF" => ["37.792351477","-122.406151383"], "CHI" => ["41.889714","-87.63719"] }
-
   def coordinate_tags
     ['ruby', 'devbootcamp', 'rails', 'dbc', 'javascript']
   end
@@ -18,7 +8,23 @@ module InstagramApi
   def tags
     ['devbootcamp']
   end
+  
+  def sf_coordinates
+    ["37.792351477","-122.406151383"]
+  end
 
+  def chi_coordinates
+    ["41.889714","-87.63719"]
+  end
+
+  def sf_instagram_id
+    16169461
+  end
+
+  def chi_instagram_id
+    68855928
+  end
+  
   def instagram_ids
     [DBCSF_instagram_id, DBCChicago_instagram_id]
   end
@@ -31,37 +37,31 @@ module InstagramApi
     obj.caption.nil? ? "" : obj.caption.text
   end
 
-  def dbc_smart_coordinate_search
-    LOCATION_COORDINATES.each_value do |coordinate|
-      puts "Coordinates: #{coordinate}"
-      Instagram.media_search(coordinate[0],coordinate[1]).each do |obj|
-        puts "Obj: #{obj}"
-        unless (obj.tags & coordinate_tags).empty?
-          instagram_resource.posts.create( caption: caption(obj),
-           media_type: 'photo',
-           posted_at: DateTime.strptime(obj.created_time, '%s'),
-           body: obj.user.full_name + " " + obj.user.username + " " + caption(obj),
-           url: obj.url,
-           data: obj
-           )
-        end
+  def dbc_smart_coordinate_search(coordinates_array)
+    Instagram.media_search(coordinates_array[0],coordinates_array[1]).each do |obj|
+      puts "Coordinates: #{coordinates_array}"
+      puts "Obj: #{obj}"
+      unless (obj.tags & coordinate_tags).empty?
+        instagram_resource.posts.create( caption: caption(obj),
+         media_type: 'photo',
+         posted_at: DateTime.strptime(obj.created_time, '%s'),
+         body: obj.user.full_name + " " + obj.user.username + " " + caption(obj),
+         url: obj.url,
+         data: obj
+         )
       end
     end
   end
 
-  def dbc_location_search
-    instagram_ids.each do |id|
-      Instagram.location_recent_media(id).each do |obj|
-        puts obj
-        instagram_resource.posts.create( caption: caption(obj),
-          media_type: 'photo',
-          posted_at: DateTime.strptime(obj.created_time, '%s'),
-          body: obj.user.full_name + " " + obj.user.username + " " + caption(obj), 
-          url: obj.link,
-          data: obj
-          )
-      end
-
+  def dbc_location_search(instagram_location_id)
+    Instagram.location_recent_media(instagram_location_id).each do |obj|
+      instagram_resource.posts.create( caption: caption(obj),
+        media_type: 'photo',
+        posted_at: DateTime.strptime(obj.created_time, '%s'),
+        body: obj.user.full_name + " " + obj.user.username + " " + caption(obj), 
+        url: obj.link,
+        data: obj
+        )
     end
   end
 
