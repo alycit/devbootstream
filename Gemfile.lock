@@ -196,6 +196,8 @@ GEM
       hashie
       multi_json (~> 1.0)
       uuidtools
+    shoulda-matchers (2.0.0)
+      activesupport (>= 3.0.0)
     sidekiq (2.11.2)
       celluloid (>= 0.13.0)
       connection_pool (>= 1.0.0)
@@ -274,6 +276,7 @@ DEPENDENCIES
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)
   sentry-raven
+  shoulda-matchers
   sidekiq
   textacular (~> 3.0)
   therubyracer
