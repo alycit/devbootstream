@@ -4,10 +4,6 @@ namespace :sidekiq do
   task :start => :environment do
     TumblrWorker.perform_async
   end
-  desc "instagram task"
-  task :instagram_start => :environment do
-    InstagramWorker.perform_async
-  end
 
   desc "one time task to begin building twitter records for all boots in system"
   task :initial_twitter_populate => :environment do
@@ -19,11 +15,6 @@ namespace :sidekiq do
   desc "TweetStream worker that will listen for any new tweets"
   task :listen  => :environment do
     TwitterApi.update_new_tweets
-  end
-
-  desc "populate database with current instagrams matching DBC id's and DBC geo-coordinates"
-  task :get_instagrams => :environment do
-    InstagramApi.get_instagrams
   end
 
   desc "initial DB populate for instagrams and twitters"
