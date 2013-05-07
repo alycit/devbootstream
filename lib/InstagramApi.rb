@@ -24,10 +24,6 @@ module InstagramApi
   def chi_instagram_id
     68855928
   end
-  
-  def instagram_ids
-    [DBCSF_instagram_id, DBCChicago_instagram_id]
-  end
 
   def instagram_resource
     Resource.find_by_user_name_and_source("public", "instagram")
@@ -38,18 +34,26 @@ module InstagramApi
   end
 
   def dbc_smart_coordinate_search(coordinates_array)
-    Instagram.media_search(coordinates_array[0],coordinates_array[1]).each do |obj|
-      puts "Coordinates: #{coordinates_array}"
-      puts "Obj: #{obj}"
-      unless (obj.tags & coordinate_tags).empty?
-        instagram_resource.posts.create( caption: caption(obj),
-         media_type: 'photo',
-         posted_at: DateTime.strptime(obj.created_time, '%s'),
-         body: obj.user.full_name + " " + obj.user.username + " " + caption(obj),
-         url: obj.url,
-         data: obj
-         )
+    begin
+      Instagram.media_search(coordinates_array[0],coordinates_array[1]).each do |obj|
+        puts "Coordinates: #{coordinates_array}"
+        puts "Obj: #{obj}"
+        unless (obj.tags & coordinate_tags).empty?
+          instagram_resource.posts.create( caption: caption(obj),
+           media_type: 'photo',
+           posted_at: DateTime.strptime(obj.created_time, '%s'),
+           body: obj.user.full_name + " " + obj.user.username + " " + caption(obj),
+           url: obj.url,
+           data: obj
+           )
+        end
       end
+
+    #5-10% chance of 400 error
+    rescue Instagram::BadRequest
+      Rails.logger.debug "Bad request, retrying..."
+      puts "BAD REQUEST"
+      retry
     end
   end
 
@@ -79,39 +83,9 @@ module InstagramApi
     end
   end
 
-  def get_instagrams
-    dbc_location_search
-    tags_search
-    dbc_smart_coordinate_search
-  end
+  # def get_instagrams
+  #   dbc_location_search
+  #   tags_search
+  #   dbc_smart_coordinate_search
+  # end
 end
-
-# def client 
-#   Instagram.client(:access_token => "357627834.3bdcc20.299991d0a5b24034bae7bc68f189e6a0")
-# end
-
-
-# def user_media(id)
-#   p = client.user_recent_media(id).first
-#   Resource.find(2).posts.create(caption: p.caption.text,
-#    media_type: 'photo',
-#    posted_at: DateTime.strptime(p.created_time, '%s'),
-#    url: p.images.standard_resolution.url)
-
-# end
-# def user(username)
-#   t = Instagram.user_search(username).first
-#   Resource.find(2).posts.create(title: t.full_name, media_type: 'photo', posted_at: DateTime.now )
-# end
-
-# access_token = "357627834.3bdcc20.299991d0a5b24034bae7bc68f189e6a0"
-
-# def dbc_location_id_search
-#   Instagram.media_search(DBCSF_lat, DBCSF_long).each do |obj|
-#     Resource.find(2).posts.create( caption: obj.caption.text,
-#      media_type: 'photo',
-#      posted_at: DateTime.strptime(obj.created_time, '%s'),
-#      url: obj.images.standard_resolution.url
-#      )
-#   end
-# end
