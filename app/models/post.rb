@@ -22,6 +22,7 @@ class Post < ActiveRecord::Base
 
 
   after_create do |post|
+    Pusher.trigger('bootstream', 'post_created', post.data)
     if post.resource.source == "twitter"
       update_twitter_profile_pic(post)
     end
