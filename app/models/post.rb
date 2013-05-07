@@ -60,14 +60,3 @@ class Post < ActiveRecord::Base
   end
 
 end
-
-
-posts = Post.all
-posts.each do |post|
-
-end
-
-
-
-
-
