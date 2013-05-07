@@ -12,6 +12,68 @@
  *= require_tree .
  */
 
- .original_post {
+.container {
+  padding-top: 60px;
+}
+
+.logo {
+  float: left;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.filter_link {
+  float: left;
+  padding: 15px;
+  font-size: 20px;
+}
+
+.header {
+  position: fixed;
+  height: 50px;
+  background-color: #f7f5f5;
+  width: 100%;
+  border-bottom: 1px dotted;
+}
+
+.original_post {
  	float: right;
  }
+
+.source_filter li {
+  display: inline;
+  padding-left: 10px;
+ }
+
+.phase_filter li {
+  display: inline;
+  padding-left: 10px;
+ }
+
+
+.cohort_filter ul{
+  width:760px;
+  margin-bottom:0px;
+  padding: 0px;
+  overflow:hidden;
+  list-type: none;
+}
+
+.cohort_filter li{
+	width:50%;
+  line-height:1.5em;
+  float:left;
+  margin-left: 0px;
+  display:inline;
+  list-type: none;
+  padding: 0px;
+}
+
+.source_icon {
+  float:left;
+  padding-right: 10px;
+}
+
+
+
+

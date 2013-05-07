@@ -109,7 +109,9 @@ CREATE TABLE posts (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     data text,
-    phase_id integer
+    phase_id integer,
+    cohort character varying(255),
+    source character varying(255)
 );
 
 
@@ -295,10 +297,31 @@ CREATE INDEX index_boots_on_cohort_id ON boots USING btree (socrates_cohort_id);
 
 
 --
+-- Name: index_posts_on_cohort; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_posts_on_cohort ON posts USING btree (cohort);
+
+
+--
+-- Name: index_posts_on_phase_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_posts_on_phase_id ON posts USING btree (phase_id);
+
+
+--
 -- Name: index_posts_on_resource_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_posts_on_resource_id ON posts USING btree (resource_id);
+
+
+--
+-- Name: index_posts_on_source; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_posts_on_source ON posts USING btree (source);
 
 
 --
@@ -358,3 +381,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130505070621');
 INSERT INTO schema_migrations (version) VALUES ('20130505175458');
 
 INSERT INTO schema_migrations (version) VALUES ('20130506003830');
+
+INSERT INTO schema_migrations (version) VALUES ('20130506200429');
+
+INSERT INTO schema_migrations (version) VALUES ('20130506204401');
+
+INSERT INTO schema_migrations (version) VALUES ('20130506220839');

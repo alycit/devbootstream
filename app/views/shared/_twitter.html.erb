@@ -1,15 +1,14 @@
 
 
-<div class="media well">
-  <a href="#" class="pull-left">
-    <img src="http://dummyimage.com/64x64&text=avatar" class="media-object" alt='' /></a>
-    <div class="media-body">
-      <h4 class="media-heading"></h4>
+<%= image_tag @post.data['user']['profile_image_url'] %>
+  <a href="#">
+
+    <img src="<%= @post.data['user']['profile_image_url'] %>"></a>
+
       <b><%= @post.resource.user_name %></b>
       <br>
-      <%= @post.title %>
-	</div>
-</div>
+      <%= @post.body %>
+
 
 
 

@@ -1,17 +1,18 @@
 
 
 
-<div class="media well">
+
+<%= render 'shared/meta' %>
 
 
-  <a href="http://<%= @post.resource.identifier %>" class="pull-left">
-    <%= image_tag(@post.resource.profile_pic_url, :size => "64x64") %></a>
+  <a href="http://<%= @post.resource.identifier %>" class="avatar">
+    <%= image_tag(@post.resource.profile_pic_url, :size => "64x64") %>
+  </a>
+    
 
-    <b><%= @post.data["blog_name"] %></b>
-    <div class="media-body">
-      <h4 class="media-heading"><%= @post.title %></h4>
+  <b><%= @post.data["blog_name"] %></b>
+    
+
+    <h4><%= @post.title %></h4>
       <%= raw(@post.data['body']) %> 
-    </div>
-
-</div>
 
