@@ -32,20 +32,24 @@ module InstagramApi
   def caption(obj)
     obj.caption.nil? ? "" : obj.caption.text
   end
-
+  
+  def create_instagram_post(obj)
+    instagram_resource.posts.create(caption: caption(obj),
+      media_type: 'photo',
+      posted_at: DateTime.strptime(obj.created_time, '%s'),
+      body: obj.user.full_name + " " + obj.user.username + " " + caption(obj),
+      url: obj.link,
+      data: obj
+      )
+  end
+  
   def dbc_smart_coordinate_search(coordinates_array)
     begin
       Instagram.media_search(coordinates_array[0],coordinates_array[1]).each do |obj|
         puts "Coordinates: #{coordinates_array}"
         puts "Obj: #{obj}"
         unless (obj.tags & coordinate_tags).empty?
-          instagram_resource.posts.create( caption: caption(obj),
-           media_type: 'photo',
-           posted_at: DateTime.strptime(obj.created_time, '%s'),
-           body: obj.user.full_name + " " + obj.user.username + " " + caption(obj),
-           url: obj.url,
-           data: obj
-           )
+          create_instagram_post(obj)
         end
       end
 
@@ -56,30 +60,20 @@ module InstagramApi
       retry
     end
   end
+end
 
-  def dbc_location_search(instagram_location_id)
-    Instagram.location_recent_media(instagram_location_id).each do |obj|
-      instagram_resource.posts.create( caption: caption(obj),
-        media_type: 'photo',
-        posted_at: DateTime.strptime(obj.created_time, '%s'),
-        body: obj.user.full_name + " " + obj.user.username + " " + caption(obj), 
-        url: obj.link,
-        data: obj
-        )
+def dbc_location_search(instagram_location_id)
+  Instagram.location_recent_media(instagram_location_id).each do |obj|
+      create_instagram_post(obj)
     end
   end
 
   def tags_search
     tags.each do |tag|
       Instagram.tag_recent_media(tag).each do |obj|
-        instagram_resource.posts.create( caption: caption(obj),
-          media_type: 'photo',
-          posted_at: DateTime.strptime(obj.created_time, '%s'),
-          body: obj.user.full_name + " " + obj.user.username + " " + caption(obj),
-          url: obj.link,
-          data: obj
-          )
+        create_instagram_post(obj)
       end
     end
   end
+
 end
