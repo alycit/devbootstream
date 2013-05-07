@@ -17,9 +17,9 @@
 
 <% end %>
 
-<!-- <%= render "shared/modal_filter" %> -->
+<%#= render "shared/modal_filter" %>
 
-<!-- <%= render "shared/filter_error" %> -->
+<%#= render "shared/filter_error" %>
 
 
 
@@ -27,14 +27,15 @@
     <div id="notice"><%= flash[:notice] %></div>
 <% end %>
 
-
+<%#= params %>
 
 <% @posts.each do |post| %>
-<div class="grid">
-
   <% @post = post %>
 
     <% source = @post.resource.source %>
+
+<div class="grid">
+
 
       <% if source == 'tumblr' %>
         <%= render 'shared/tumblr' %>

@@ -12,6 +12,36 @@
  *= require_tree .
  */
 
+
+
+
+.avatar {
+  float: left;
+  padding-right: 10px;
+  padding-bottom: 5px;
+}
+
+.blog_name {
+  
+  font-style: italic;
+
+}
+
+.post_title .tumblr_image_caption {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.post_body {
+  float: left;
+}
+
+.tweet {
+  padding-top: 5px;
+  font-size: 14px;
+}
+
+
 .container {
   padding-top: 60px;
 }

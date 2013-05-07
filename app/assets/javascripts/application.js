@@ -15,6 +15,13 @@
 //= require_tree .
 
 $(document).ready(function() {
+$(window).load( function() {
+    $('#container').BlocksIt({
+      numOfCol: 4,
+      offsetX: 8,
+      offsetY: 8
+    });
+  });
   //vendor script
   $('#header')
   .css({ 'top':-50 })
@@ -27,14 +34,7 @@ $(document).ready(function() {
   .animate({'bottom': 0}, 800);
   
   //blocksit define
-  $(window).load( function() {
-    $('#container').BlocksIt({
-      numOfCol: 5,
-      offsetX: 8,
-      offsetY: 8
-    });
-  });
-  
+
   //window resize
   var currentWidth = 1100;
   $(window).resize(function() {
@@ -42,16 +42,16 @@ $(document).ready(function() {
     var conWidth;
     if(winWidth < 660) {
       conWidth = 440;
-      col = 2
+      col = 1
     } else if(winWidth < 880) {
       conWidth = 660;
-      col = 3
+      col = 2
     } else if(winWidth < 1100) {
       conWidth = 880;
-      col = 4;
+      col = 3;
     } else {
       conWidth = 1100;
-      col = 5;
+      col = 3;
     }
     
     if(conWidth != currentWidth) {

@@ -3,10 +3,9 @@
 
 <span class="source_icon"><%= image_tag("#{@post.resource.source}.png", :size => "20x20") %></span>
 
+<b><%= @post.resource.boot.try(:name) %></b> <% cohort = @post.resource.boot.try(:cohort) %> <%= cohort.try(:name) %><br>Posted <%= time_ago_in_words(@post.posted_at)%> ago 
 
-Posted <%= time_ago_in_words(@post.posted_at)%> ago by <b><%= @post.resource.boot.try(:name) %></b>, <% cohort = @post.resource.boot.try(:cohort) %>
 
-<%= cohort.try(:name) %>
         
 </div>        
 <hr>

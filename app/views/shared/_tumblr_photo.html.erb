@@ -2,12 +2,25 @@
 
 <%= render 'shared/meta' %>
 
-  <a href="#" class="pull-left">
-    <img src="http://dummyimage.com/64x64&text=avatar" class="media-object" alt='' /></a>
 
-      <h4 class="media-heading">
-       </h4>
+<a href="http://<%= @post.resource.identifier %>" class="avatar">
+  <%= image_tag(@post.resource.profile_pic_url, :size => "64x64") %>
+</a>
 
+
+<div class="masthead">  
+  <div class="blog_name"><%= @post.data["blog_name"] %></div>
+  <div class="tumblr_image_caption"><%= raw(@post.data['caption']) %></div>
+</div>
    
-      <%= image_tag @post.data["photos"][0]["alt_sizes"][0]["url"] %> 
+<%= image_tag @post.data["photos"][0]["alt_sizes"][2]["url"] %> 
+
+<%= link_to "original post", @post.data['short_url'] %>
+
+
+
+
+
+
+
 

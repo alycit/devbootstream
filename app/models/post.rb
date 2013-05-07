@@ -1,6 +1,6 @@
 require 'textacular/searchable'
 class Post < ActiveRecord::Base
-  extend Searchable(:title, :body)
+  extend Searchable(:title, :body, :phase_id, :cohort, :source)
   before_create :add_phase_stamp
   after_create :add_cohort
   after_create :add_source

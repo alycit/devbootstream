@@ -106,7 +106,7 @@ a:hover, a:active{
 	
 }
 .grid{
-	width:288px;
+	width:480px;
 	min-height:100px;
 	padding: 15px;
 	background:#fff;
@@ -121,7 +121,7 @@ a:hover, a:active{
 	-moz-transition: top 1s ease, left 1s ease;
 	-o-transition: top 1s ease, left 1s ease;
 	-ms-transition: top 1s ease, left 1s ease;
-	height: 300px;
+	
 	overflow: hidden;
 }
 
@@ -133,7 +133,7 @@ a:hover, a:active{
 	font-size:17px;
 }
 .grid .meta{
-	text-align:right;
+	font-size: .9em;
 	color:#777;
 	font-style:italic;
 }
@@ -145,7 +145,6 @@ a:hover, a:active{
 
 .grid img {
 	max-width:100%;
-	background:#ccc;
 	display:block;
 }
 

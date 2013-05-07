@@ -1,18 +1,17 @@
 
 
 
-
 <%= render 'shared/meta' %>
 
 
-  <a href="http://<%= @post.resource.identifier %>" class="avatar">
-    <%= image_tag(@post.resource.profile_pic_url, :size => "64x64") %>
-  </a>
-    
+<a href="http://<%= @post.resource.identifier %>" class="avatar">
+  <%= image_tag(@post.resource.profile_pic_url, :size => "64x64") %>
+</a>
 
-  <b><%= @post.data["blog_name"] %></b>
-    
+<div class="masthead">  
+  <div class="blog_name"><%= @post.data["blog_name"] %></div>
+  <div class="post_title"><%= @post.title %></div>
+</div>
 
-    <h4><%= @post.title %></h4>
-      <%= raw(@post.data['body']) %> 
+<div class"post_body"><%= raw(@post.data['body']) %></div>
 
