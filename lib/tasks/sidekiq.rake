@@ -1,9 +1,4 @@
-require_relative '../../lib/TwitterApi'
-require_relative '../../lib/InstagramApi'
-
-namespace :sidekiq do  
-  include TwitterApi
-  include InstagramApi
+namespace :sidekiq do
 
   desc "tumblr test"
   task :start => :environment do
