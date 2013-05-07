@@ -5,6 +5,8 @@ class InstagramWorker
   include InstagramApi
   sidekiq_options :retry => false
 
+  ActiveRecord::Base.observers.disable :all
+
   def perform
     InstagramApi.get_instagrams
   end

@@ -1,7 +1,9 @@
 class TumblrWorker
- include Sidekiq::Worker
- sidekiq_options :retry=>false
-
+  include Sidekiq::Worker
+  sidekiq_options :retry=>false
+  
+  ActiveRecord::Base.observers.disable :all
+  
   def perform
     resources = Resource.tumblr.all
     client = Tumblr::Client.new
