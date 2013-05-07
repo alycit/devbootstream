@@ -36,6 +36,7 @@ gem 'whenever'
 gem 'activerecord-postgres-hstore'
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
 gem 'faker'
+gem 'pusher'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
