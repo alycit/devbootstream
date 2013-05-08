@@ -10,7 +10,7 @@
 
 <div class="masthead">  
   <div class="blog_name"><%= @post.data["user"]["username"] %></div>
-  <div class="instagram_caption"><%= @post.data["caption"]["text"] %></div>
+  <div class="instagram_caption"><%= @post.data["caption"]["text"] rescue "" %></div>
 </div>
    
 <%= image_tag @post.data["images"]["low_resolution"]["url"], :class => 'instagram_image' %>
