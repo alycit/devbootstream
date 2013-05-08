@@ -10,17 +10,16 @@ class Resource < ActiveRecord::Base
   scope :instagram, where(:source => "instagram")
   validates :source, :presence=>true
 
-  before_create do |resource|
-    true if resource.source != 'twitter'
-    self.valid_account? if resource.source == 'twitter'
-  end
+  before_create :valid_account?, :if => :twitter?
+  after_create :create_identifier_id, :if => :twitter?
 
-  after_create do |resource|
-    create_identifier_id if resource.source == 'twitter'
+  def twitter?
+    source == 'twitter'
   end
 
   def valid_account?
     user_matches = Twitter.user_search(self.identifier)
+    
     if user_matches.empty?
       return false
     else
@@ -50,7 +49,8 @@ class Resource < ActiveRecord::Base
     end
   end
 
-  def newest_tweet_id
-    self.posts.pluck(:url).map { |f| f.match(/(status\/)(.+)/)[2].to_i }.max
-  end
+  # Deprecated if using TweetStream
+  # def newest_tweet_id
+  #   self.posts.pluck(:url).map { |f| f.match(/(status\/)(.+)/)[2].to_i }.max
+  # end
 end
