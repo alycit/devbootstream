@@ -11,7 +11,8 @@ gem 'instagram'
 gem 'twitter'
 gem 'tweetstream'
 # gem 'time-ago-in-words'
-
+gem 'newrelic_rpm'
+gem 'sentry-raven'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -36,6 +37,7 @@ gem 'whenever'
 gem 'activerecord-postgres-hstore'
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
 gem 'faker'
+gem 'pusher'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
@@ -43,6 +45,7 @@ group :test, :development do
   gem "better_errors"
   gem "debugger"
   gem "pry"
+  gem "shoulda-matchers"
 end
 
 

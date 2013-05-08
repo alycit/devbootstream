@@ -1,18 +1,8 @@
-require_relative '../../lib/TwitterApi'
-require_relative '../../lib/InstagramApi'
-
 namespace :sidekiq do
-
-include TwitterApi
-include InstagramApi
 
   desc "tumblr test"
   task :start => :environment do
     TumblrWorker.perform_async
-  end
-  desc "instagram task"
-  task :instagram_start => :environment do
-    InstagramWorker.perform_async
   end
 
   desc "one time task to begin building twitter records for all boots in system"
@@ -27,18 +17,14 @@ include InstagramApi
     TwitterApi.update_new_tweets
   end
 
-  desc "populate database with current instagrams matching DBC id's and DBC geo-coordinates"
-  task :get_instagrams => :environment do
-    InstagramApi.get_instagrams
-  end
+  # Deprecated -- DB populated!
+  # desc "initial DB populate for instagrams and twitters"
+  # task :first_boot => :environment do
+  #   Resource.twitter.each do |twitter_resources|
+  #     TwitterApi.slow_initial_populate(twitter_resources)
+  #   end
 
-  desc "initial DB populate for instagrams and twitters"
-  task :first_boot => :environment do
-    Resource.twitter.each do |twitter_resources|
-      TwitterApi.slow_initial_populate(twitter_resources)
-    end
-
-    InstagramApi.get_instagrams
-  end
+  #   InstagramApi.get_instagrams
+  # end
 
 end
