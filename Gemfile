@@ -45,6 +45,7 @@ group :test, :development do
   gem "better_errors"
   gem "debugger"
   gem "pry"
+  gem "shoulda-matchers"
 end
 
 

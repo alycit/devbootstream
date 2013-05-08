@@ -54,10 +54,11 @@ module InstagramApi
       end
 
     #5-10% chance of 400 error
-  rescue Instagram::BadRequest
-    Rails.logger.debug "Bad request, retrying..."
-    puts "BAD REQUEST"
-    retry
+    rescue Instagram::BadRequest => e
+      Rails.logger.debug e
+      Rails.logger.debug "Bad request, retrying..."
+      retry
+    end
   end
 end
 
