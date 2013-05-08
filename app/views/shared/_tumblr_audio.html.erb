@@ -1,2 +1,16 @@
 
-(this is a tumblr audio post)
+<%= render 'shared/meta' %>
+
+
+<a href="http://<%= @post.resource.identifier %>" class="avatar">
+  <%= image_tag(@post.resource.profile_pic_url, :size => "64x64") %>
+</a>
+
+<div class="masthead">  
+  <div class="blog_name"><%= @post.data["blog_name"] %></div>
+  <div class="post_title"><%= @post.title %></div>
+</div>
+
+<div class"post_body"><%= raw(@post.data['caption']) %></div>
+<div class"post_body"><%= raw(@post.data['player']) %></div>
+

@@ -12,6 +12,145 @@
  *= require_tree .
  */
 
- .original_post {
+.search {
+  display: inline-block;
+  float: right;
+}
+
+
+.avatar {
+  float: left;
+  padding-right: 10px;
+  padding-bottom: 5px;
+}
+
+.blog_name {
+  
+  font-style: italic;
+
+}
+
+.tumblr_image_caption {
+  font-weight: bold;
+  font-size: 13px;  
+}
+
+.post_title  {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.post_body {
+  float: left;
+}
+
+.tweet {
+  padding-top: 5px;
+  font-size: 18px;
+}
+
+.original_link {
+  display: block;
+  float: right;
+  padding-top: 5px;
+  margin-bottom : -10px;
+}
+
+.instagram_image {
+  padding-top: 5px;
+}
+
+#modal  {
+  display: none;
+  position:fixed;
+  left:250px;
+  top:50px;
+  z-index: 1;
+  background-color: white;
+  width: 500px;
+  padding: 20px;
+  border: 10px solid #ccc;
+  -moz-border-radius: 1em 1em 4em 4em;
+  border-radius: 1em 1em 4em 4em;
+}
+
+.logo {
+  float: left;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.filter_link {
+  float: left;
+  padding: 15px;
+  font-size: 20px;
+}
+
+a.headline_link {
+  color: black;
+  border-bottom: 1px dotted #ccc;
+}
+
+a.headline_link:hover {
+  
+}
+
+.header {
+  position: fixed;
+  height: 50px;
+  background-color: #f7f5f5;
+  width: 100%;
+  border-bottom: 1px dotted;
+  z-index: 1;
+  opacity:0.95;
+  filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+
+.original_post {
  	float: right;
  }
+
+.source_filter li {
+  display: inline;
+  padding-left: 10px;
+ }
+
+.phase_filter li {
+  display: inline;
+  padding-left: 10px;
+ }
+
+
+.cohort_filter ul{
+  width:760px;
+  margin-bottom:0px;
+  padding: 0px;
+  overflow:hidden;
+  list-type: none;
+}
+
+.cohort_filter li{
+	width:50%;
+  line-height:1.5em;
+  float:left;
+  margin-left: 0px;
+  display:inline;
+  list-type: none;
+  padding: 0px;
+}
+
+.source_icon {
+  float: left;
+  display: block;
+  padding-right: 5px;
+}
+
+.stamp {
+  display: block;
+  margin-left: 25px;
+}
+
+
+
+
+

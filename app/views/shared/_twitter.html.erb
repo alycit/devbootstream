@@ -1,16 +1,21 @@
+<%= render 'shared/meta' %>
+
+<a href="http://twitter.com/<%= @post.data['user']['screen_name'] %>" class="avatar"><%= image_tag @post.data['user']['profile_image_url'] %></a>
+
+      <div class="masthead">
+
+        <div class="blog_name">
+          <%= @post.data['user']['screen_name'] %>
+        </div>  
+
+        <div class="tweet">
+          "<%= @post.data['text'] %>"
+        </div>  
+
+      </div>
 
 
-<div class="media well">
-  <a href="#" class="pull-left">
-    <img src="http://dummyimage.com/64x64&text=avatar" class="media-object" alt='' /></a>
-    <div class="media-body">
-      <h4 class="media-heading"></h4>
-      <b><%= @post.resource.user_name %></b>
-      <br>
-      <%= @post.title %>
-	</div>
-</div>
-
+<%#= link_to "original tweet", "http://twitter.com/" + @post.data['user']['screen_name'] + "/status/" + @post.data['id'].to_s %>
 
 
 

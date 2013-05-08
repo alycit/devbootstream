@@ -1,9 +1,8 @@
 
-<form action="filter" method="post">
-  <input type="submit" value="Apply Filter">
-<ul>
 
-    <li><b>Source</b></li>
+<b>Source</b><br>
+<ul class="source_filter">
+
 	<% @sources.each do |source| %> 
 
 	  <% if @source && @source.include?(source.source) %>	
@@ -12,29 +11,34 @@
       <li><%= check_box_tag 'source[]', source.source %> <%= source.source %></li>
       <% end %>
 
-    <% end %>
-    <li></li>
-    
-    <li><b>Phase</b></li>
-	<% @phases.each do |phase| %> 
-      <li><%= check_box_tag 'phase[]', phase %> <%= phase %></li> 
-    <% end %>
-    <li></li>
-    
-    <li><b>Cohort</b></li>
-	<% @cohorts.each do |cohort| %> 
-      <li><%= check_box_tag 'cohort[]', cohort.id %> <%= cohort.name %></li> 
-    <% end %>
-    <li></li>
-
-    <li><b>Location</b></li>
-	<% @locations.each do |location| %> 
-      <li><input type="checkbox" name="<%= location %>" > <%= location %></li>
-    <% end %>
+  <% end %>
 
 </ul>
 
+<b>Phase</b><br>
+<ul class="phase_filter">
 
+  <% @phases.each_with_index do |phase,index| %>
 
-</form>
+    <% if @phase && @phase.include?(index.to_s) %>
+      <li><%= check_box_tag 'phase[]', index, true %> <%= phase %></li> 
+    <% else %>  
+      <li><%= check_box_tag 'phase[]', index %> <%= phase %></li> 
+    <% end %>
+  <% end %>  
 
+</ul>
+
+<b>Cohort</b><br>
+<ul class="cohort_filter">    
+    
+  <% @cohorts.each_with_index do |cohort,index| %>
+    <% if index % 2 == 0; x = 1; else x = 2; end %>
+    <% if @cohort && @cohort.include?(cohort.name) %>
+      <li class='<%= x %>'><%= check_box_tag 'cohort[]', cohort.name, true %> <%= cohort.name %></li> 
+    <% else %>  
+      <li class='<%= x %>'><%= check_box_tag 'cohort[]', cohort.name %> <%= cohort.name %></li> 
+    <% end %>
+  <% end %>  
+    <li></li>
+</ul>

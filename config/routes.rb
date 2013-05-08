@@ -12,7 +12,7 @@ Bootstream::Application.routes.draw do
   post 'instacallback', to: 'subscriptions#create'
   root :to => "pages#index"
 
-  post "/filter" => "pages#index"
+  post "/" => "pages#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

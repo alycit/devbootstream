@@ -1,57 +1,58 @@
+
+<% if @posts.length == 0 %>
+
+  0 posts found<br><br>
+
+<% end %>
+
+<% if @posts.length < 5 && @posts.length > 0 %>
+
+  Less than 5 posts, try relaxing your filters.
+
+<% end %>
+
+<% if @all != 0 || @num_filters == @all %>
+
+  There are filters applied.
+
+<% end %>
+
+
+
+<%#= render "shared/filter_error" %>
+
+
+
 <% if flash[:notice] %>
     <div id="notice"><%= flash[:notice] %></div>
 <% end %>
 
-<%= @posts.length %><br>
-<%= @params %><br><br>
+<%#= params %>
 
-<%= @source %>
-
-
-<%= render 'shared/filter' %>
-
-<hr>
 <% @posts.each do |post| %>
+  <% @post = post %>
 
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span12">
-        <% @post = post %>
+    <% source = @post.resource.source %>
 
-        <%= image_tag("#{@post.resource.source}.png", :size => "40x40") %>&nbsp;&nbsp;
+<div class="grid">
 
 
-        Posted <%= time_ago_in_words(@post.posted_at)%> ago by
-      
+      <% if source == 'tumblr' %>
+        <%= render 'shared/tumblr' %>
+      <% end %>
 
-        <b><%= @post.resource.boot.try(:name) %></b>, 
-      
-        <% cohort = @post.resource.boot.try(:cohort) %>
-        <%= cohort.try(:name) %>
-        
-        <span class="original_post"><%= link_to 'original post', '' %></span>
+      <% if source == 'twitter' %>
+        <%= render 'shared/twitter' %>
+      <% end %>
 
-        <% source = @post.resource.source %>
-
-        <% if source == 'tumblr' %>
-          <%= render 'shared/tumblr' %>
-        <% end %>
-
-        <% if source == 'twitter' %>
-          <%= render 'shared/twitter' %>
-        <% end %>
-
-        <% if source == 'instagram' %>
-          <%= render 'shared/instagram' %>
-        <% end %>
-
-    </div>
-  </div>
+      <% if source == 'instagram' %>
+        <%= render 'shared/instagram' %>
+      <% end %>
 </div>
 
-<hr>
 
-<% end %>    
+<% end %>   
+
 
 
 

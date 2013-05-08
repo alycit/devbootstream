@@ -2,6 +2,7 @@ class Resource < ActiveRecord::Base
 
   belongs_to :boot
   has_many :posts
+
   attr_accessible :identifier, :identifier_id, :profile_pic_url, :source, :user_name
 
   scope :tumblr, where(:source => "tumblr")

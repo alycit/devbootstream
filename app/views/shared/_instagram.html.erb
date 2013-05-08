@@ -1,18 +1,18 @@
 
 
-
-			
-      <div class="media well">
-        
-        <a href="#" class="pull-left"><img src="http://lorempixel.com/64/64/" class="media-object" alt='' /></a>
-
-         <div class="media-body">
-           <h4 class="media-heading"><%= @post.title %></h4>
-           <%= image_tag @post.url %>
-	     </div>
-      
-      </div>
+<%= render 'shared/meta' %>
 
 
+<a href="http://instagram.com/<%= @post.data["user"]["username"] %>" class="avatar">
+  <%= image_tag(@post.data["user"]["profile_picture"], :size => "64x64") %>
+</a>
 
 
+<div class="masthead">  
+  <div class="blog_name"><%= @post.data["user"]["username"] %></div>
+  <div class="instagram_caption"><%= @post.data["caption"]["text"] %></div>
+</div>
+   
+<%= image_tag @post.data["images"]["low_resolution"]["url"], :class => 'instagram_image' %>
+
+<%= link_to "original post", @post.data['link'], :class => "original_link" %>
