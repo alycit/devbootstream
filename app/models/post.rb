@@ -2,19 +2,21 @@ require 'textacular/searchable'
 class Post < ActiveRecord::Base
   extend Searchable(:title, :body, :phase_id, :cohort, :source)
   before_create :add_phase_stamp
-  after_create :add_cohort
-  after_create :add_source
+  
+  after_create :add_cohort, :add_source
+  after_create :update_twitter_profile_pic, :if => :twitter?
 
   belongs_to :resource
+  
   serialize :data, JSON
   attr_accessible :body, :media_type, :posted_at, :title, :url, :data, :caption
 
   validates :posted_at, 
-    :uniqueness=>{:scope=>:resource_id}
+  :uniqueness=>{:scope=>:resource_id}
 
   validates :media_type, 
-    :resource_id, 
-    :posted_at, :presence=>true
+  :resource_id, 
+  :posted_at, :presence=>true
 
   alias_attribute :caption, :title
 
@@ -23,18 +25,15 @@ class Post < ActiveRecord::Base
   scope :twitter, where(:resource_id => Resource.twitter)
 
 
-  after_create do |post|
-    # Pusher.trigger('bootstream', 'post_created', post.data)
-    if post.resource.source == "twitter"
-      update_twitter_profile_pic(post)
-    end
+  def twitter?
+    self.resource.source == "twitter"
   end
 
-  def update_twitter_profile_pic(post)
-    if post.resource.profile_pic_url == post.data["user"]["profile_image_url"]
+  def update_twitter_profile_pic
+    if resource.profile_pic_url == data["user"]["profile_image_url"]
       return
     else
-      post.resource.update_attributes(:profile_pic_url => post.data["user"]["profile_image_url"])
+      resource.update_attributes(:profile_pic_url => data["user"]["profile_image_url"])
     end
   end
 
