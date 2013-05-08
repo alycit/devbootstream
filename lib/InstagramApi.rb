@@ -59,7 +59,7 @@ module InstagramApi
       Rails.logger.debug "Bad request, retrying..."
       retry
     end
-  end
+  
 end
 
 def dbc_location_search(instagram_location_id)

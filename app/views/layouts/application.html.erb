@@ -24,20 +24,13 @@
 <body>
 <%= render 'shared/header' %>
 
-<!--
-	  <% if current_user %>
-	    <li>signed in as <strong><%= current_user.name %></strong></li>
-	    <li><%= link_to "sign out", signout_path, id: "sign_out" %></li>
-	  <% else %>
-	    <li><%= link_to "sign in with facebook", "/auth/facebook", id:   "sign_in" %></li>
-	  <% end %>
--->
-
-
-<%= render "shared/modal_filter" %>
 <div id='container'>
   <%= yield %>
 </div> 
+  <div id='pagination'>
+    <a href="http://127.0.0.1:3000/?start=1">test</a>
+    <%=link_to "next", root_url(:start=>@page_number+1) %>
+  </div>
 
 </body>
 </html>

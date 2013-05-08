@@ -1,13 +1,14 @@
 class PagesController < ApplicationController
 
   def index
-  	show_filters
-  	apply_filters
+    @page_number = (params[:start].to_i || 0 )
+    offset = @page_number * 30
+    @posts = Post.order("created_at DESC").limit(30).offset(offset)
     render :index
   end
     
   def search
-    @posts = Post.search(params[:q]).limit(10)
+    # @posts = Post.search(params[:q]).limit(10)
     render :index
   end
 
