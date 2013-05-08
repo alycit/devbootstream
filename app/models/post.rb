@@ -1,7 +1,7 @@
 require 'textacular/searchable'
 class Post < ActiveRecord::Base
   extend Searchable(:title, :body, :phase_id, :cohort, :source)
-  before_create :add_phase_stamp
+  before_create :add_phase_stamp, :push_out
   
   after_create :add_cohort, :add_source
   after_create :update_twitter_profile_pic, :if => :twitter?
@@ -57,6 +57,18 @@ class Post < ActiveRecord::Base
       self.source = source_name
       self.save
     end
+  end
+
+  def push_out
+    #oh god im so sorry for this.... this is horrible..
+    #ideally i want to create a pusher module that the api files can be used
+    #i was hoping i would do that now
+    #additionally i was hoping i would patch it nicely by call it from the apis
+    #but the views are not oop/railsy at all...
+    #im sosoooo sorry
+
+    Pusher.trigger('bootstream', 'post_created', {:post_id=>self.id})
+
   end
 
 end
