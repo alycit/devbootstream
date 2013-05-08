@@ -12,10 +12,10 @@ class TumblrWorker
       save = true
 
       while save
-        data = client.posts(resource.identifier, :offset=>offset)
-        break if data["status"] == 404 #needs to be fixed
+        data = client.posts(resource.identifier)
+        break if data["status"] == 404
         logger.info "tumblr fetching #{resource.identifier}"
-        offset += data["posts"].length
+        offset = data["posts"].length
         author = data["blog"]["name"]
         author = author << " " << resource.boot.name unless resource.boot.nil?
         resource.update_attribute(:profile_pic_url, client.avatar(resource.identifier, 64))
@@ -23,15 +23,15 @@ class TumblrWorker
 
         data["posts"].each do |post|
           body = "#{author} #{ActionController::Base.helpers.strip_tags(post["body"])}"
-          pst = resource.posts.new(
+          resource.posts.new(
             :media_type=>post["type"],
-            :url=>post["post_url"],
+            :url=>post["url"],
             :body=>  body,
             :title=> post["title"],
             :posted_at => DateTime.strptime(post["timestamp"].to_s,"%s"),
             :data => post
           )
-          save = pst.save
+          save = resource.save
           offset = 0 unless save
         end
 
