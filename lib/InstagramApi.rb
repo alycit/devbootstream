@@ -60,10 +60,9 @@ module InstagramApi
       retry
     end
   end
-end
 
-def dbc_location_search(instagram_location_id)
-  Instagram.location_recent_media(instagram_location_id).each do |obj|
+  def dbc_location_search(instagram_location_id)
+    Instagram.location_recent_media(instagram_location_id).each do |obj|
       create_instagram_post(obj)
     end
   end
