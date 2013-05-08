@@ -1,11 +1,16 @@
 
 <%= render 'shared/meta' %>
 
-  <a href="#">
-    <img src="http://dummyimage.com/64x64&text=avatar" class="media-object" alt='' /></a>
 
-      <h4>
-       </h4>
+<a href="http://<%= @post.resource.identifier %>" class="avatar">
+  <%= image_tag(@post.resource.profile_pic_url, :size => "64x64") %>
+</a>
 
-   audio
-      
+<div class="masthead">  
+  <div class="blog_name"><%= @post.data["blog_name"] %></div>
+  <div class="post_title"><%= @post.title %></div>
+</div>
+
+<div class"post_body"><%= raw(@post.data['caption']) %></div>
+<div class"post_body"><%= raw(@post.data['player']) %></div>
+

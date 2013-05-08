@@ -1,20 +1,12 @@
-<div class="modal fade" id="test_modal">
+<div class="modal" id="modal">
 
   <form action="/" method="post">
 
-  <div class="modal-header">
-    <a class="close" data-dismiss="modal">&times;</a>
     <h3>Show posts by...</h3>
-  </div>
-  <div class="modal-body">
 
     <%= render 'shared/filter' %>
 
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn" data-dismiss="modal">Close</a>
-    <input type="submit" class="btn btn-primary" value="Apply Filter">
-  </div>
+    <input type="submit" value="Submit">
 
   </form>
 

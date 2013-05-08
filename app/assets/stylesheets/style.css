@@ -1,7 +1,7 @@
 body{
 	margin:0;
 	padding:0;
-	background:url(../bg.gif) 0 0 repeat #f7f5f5;
+	background-color: #f7f5f5;
 	color:#333;
 	font-family:Cambria, Georgia, serif;
 	font-size:15px;
@@ -101,6 +101,7 @@ a:hover, a:active{
 #container{
 	position:relative;
 	width:1100px;
+	top: 60px;
 	margin:0 auto 25px;
 	padding-bottom: 10px;
 	
@@ -132,11 +133,19 @@ a:hover, a:active{
 	padding:0 0 5px;
 	font-size:17px;
 }
-.grid .meta{
+
+.meta {
 	font-size: .9em;
 	color:#777;
 	font-style:italic;
+	padding: 8px;
+	border-bottom: 1px solid #e2e2e2;
+	margin-bottom: 8px;
+	background-color: #eff3f7;
 }
+
+
+
 .grid .imgholder img{
 	max-width:100%;
 	background:#ccc;

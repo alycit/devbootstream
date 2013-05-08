@@ -13,6 +13,6 @@
   <div class="instagram_caption"><%= @post.data["caption"]["text"] %></div>
 </div>
    
-<%= image_tag @post.data["images"]["low_resolution"]["url"] %>
+<%= image_tag @post.data["images"]["low_resolution"]["url"], :class => 'instagram_image' %>
 
-<%= link_to "original post", @post.data['link'] %>
+<%= link_to "original post", @post.data['link'], :class => "original_link" %>

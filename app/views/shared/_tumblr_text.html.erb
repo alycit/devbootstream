@@ -10,8 +10,15 @@
 
 <div class="masthead">  
   <div class="blog_name"><%= @post.data["blog_name"] %></div>
-  <div class="post_title"><%= @post.title %></div>
+
+<div class="post_title">
+  <%= link_to @post.title, @post.data['link'], :class => "headline_link" %>  
+    
+  </a>
+</div>  
+
 </div>
 
 <div class"post_body"><%= raw(@post.data['body']) %></div>
 
+<%= link_to "original post", @post.data['link'], :class => "original_link" %>

@@ -15,7 +15,7 @@
 //= require_tree .
 
 $(document).ready(function() {
-$(window).load( function() {
+  $(window).load( function() {
     $('#container').BlocksIt({
       numOfCol: 4,
       offsetX: 8,
@@ -64,4 +64,12 @@ $(window).load( function() {
       });
     }
   });
+
+  $('#filter').on('click', function(event) {
+    event.preventDefault();
+
+    $('#modal').css('display', 'block');
+
+  })
+
 });

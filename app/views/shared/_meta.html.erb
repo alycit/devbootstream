@@ -1,11 +1,16 @@
 
 <div class="meta">
 
-<span class="source_icon"><%= image_tag("#{@post.resource.source}.png", :size => "20x20") %></span>
+  <div class="source_icon"><%= image_tag("#{@post.resource.source}.png", :size => "20x20") %>
+  </div>
 
-<b><%= @post.resource.boot.try(:name) %></b> <% cohort = @post.resource.boot.try(:cohort) %> <%= cohort.try(:name) %><br>Posted <%= time_ago_in_words(@post.posted_at)%> ago 
+  <div class="stamp">
+    <% if @post.resource.boot %>
+      <b><%= @post.resource.boot.try(:name) %></b> <% cohort = @post.resource.boot.try(:cohort) %> <%= cohort.try(:name) %> &middot;
+    <% end %> Posted <%= time_ago_in_words(@post.posted_at)%> ago 
+  </div>
 
 
         
 </div>        
-<hr>
+
