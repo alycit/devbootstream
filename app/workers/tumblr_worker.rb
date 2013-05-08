@@ -31,7 +31,7 @@ class TumblrWorker
             :posted_at => DateTime.strptime(post["timestamp"].to_s,"%s"),
             :data => post
           )
-          save = pst.save
+          save = post.save
           offset = 0 unless save
         end
 
