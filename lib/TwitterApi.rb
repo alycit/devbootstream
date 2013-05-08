@@ -19,8 +19,8 @@ module TwitterApi
   end
 
   def create_tweet_post(resource, tweet)
-    resource.posts.create(  url: build_tweet_url(tweet.user.screen_name, tweet.user.status.id),
-      body: tweet.user.screen_name + " " + tweet.text,
+    resource.posts.create(url: build_tweet_url(tweet.user.screen_name, tweet.user.status.id),
+      body: tweet.user.name + " " + tweet.user.screen_name + " " + tweet.text,
       media_type: 'string',
       posted_at: tweet.created_at,
       data: tweet
@@ -28,7 +28,6 @@ module TwitterApi
   end
 
   def pause_api_calls?
-
     if $api_calls == 100
       puts "sleeping for..."
       1.upto(15) do |x|
@@ -39,7 +38,6 @@ module TwitterApi
       puts "0 == #{$api_calls}"
     end
   end
-
 
   def tagged_tweets
     tags.each do |tag|
