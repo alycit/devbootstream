@@ -59,21 +59,21 @@ module InstagramApi
       Rails.logger.debug "Bad request, retrying..."
       retry
     end
-  
 end
+
 
 def dbc_location_search(instagram_location_id)
   Instagram.location_recent_media(instagram_location_id).each do |obj|
+    create_instagram_post(obj)
+  end
+end
+
+def tags_search
+  tags.each do |tag|
+    Instagram.tag_recent_media(tag).each do |obj|
       create_instagram_post(obj)
     end
   end
-
-  def tags_search
-    tags.each do |tag|
-      Instagram.tag_recent_media(tag).each do |obj|
-        create_instagram_post(obj)
-      end
-    end
-  end
+end
 
 end
