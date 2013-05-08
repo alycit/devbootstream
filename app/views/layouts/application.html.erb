@@ -12,7 +12,9 @@
     var pusher = new Pusher('182768e694888d0849e2');
     var channel = pusher.subscribe('bootstream');
     channel.bind('post_created', function(data) {
-      console.log(data);
+      $.get('posts/'+data.post_id,function(data){
+        $('#container').prepend($(data)).masonry('reload')
+      });
     });
   </script>
 
