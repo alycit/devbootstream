@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def index
-    @page_number = (params[:start].to_i || 0 )
+    @page_number = (params[:next_page].to_i || 0 )
     offset = @page_number * 30
     @posts = Post.order("created_at DESC").limit(30).offset(offset)
     render :index

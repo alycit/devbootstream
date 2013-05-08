@@ -28,9 +28,7 @@
   <%= yield %>
 </div> 
   <div id='pagination'>
-    <a href="http://127.0.0.1:3000/?start=1">test</a>
-    <%=link_to "next", root_url(:start=>@page_number+1) %>
+    <%=link_to "next", root_url(:params=>{:next_page=>(@page_number+1)}) %>
   </div>
-
 </body>
 </html>

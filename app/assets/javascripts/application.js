@@ -23,7 +23,7 @@ $(document).ready(function() {
       itemSelector : '.grid'
     });
 
-    $('body').infinitescroll({
+    $('#container').infinitescroll({
      
       navSelector  : "#pagination",            
                      // selector for the paged navigation (it will be hidden)
@@ -82,8 +82,9 @@ $(document).ready(function() {
           // ensure that images load before adding to masonry layout
           $newElems.imagesLoaded(function(){
             // show elems now they're ready
+        
             $newElems.animate({ opacity: 1 });
-            $container.masonry( 'appended', $newElems, true ); 
+            $("#container").masonry( 'appended', $newElems, true ); 
           });
      
      });
