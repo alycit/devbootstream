@@ -54,26 +54,25 @@ module InstagramApi
       end
 
     #5-10% chance of 400 error
-  rescue Instagram::BadRequest => e
-    Rails.logger.debug e
-    Rails.logger.debug "Bad request, retrying..."
-    retry
+    rescue Instagram::BadRequest => e
+      Rails.logger.debug e
+      Rails.logger.debug "Bad request, retrying..."
+      retry
+    end
   end
-end
 
-
-def dbc_location_search(instagram_location_id)
-  Instagram.location_recent_media(instagram_location_id).each do |obj|
-    create_instagram_post(obj)
-  end
-end
-
-def tags_search
-  tags.each do |tag|
-    Instagram.tag_recent_media(tag).each do |obj|
+  def dbc_location_search(instagram_location_id)
+    Instagram.location_recent_media(instagram_location_id).each do |obj|
       create_instagram_post(obj)
     end
   end
-end
+
+  def tags_search
+    tags.each do |tag|
+      Instagram.tag_recent_media(tag).each do |obj|
+        create_instagram_post(obj)
+      end
+    end
+  end
 
 end
