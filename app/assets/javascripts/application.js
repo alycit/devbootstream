@@ -15,61 +15,88 @@
 //= require_tree .
 
 $(document).ready(function() {
-  $(window).load( function() {
-    $('#container').BlocksIt({
-      numOfCol: 4,
-      offsetX: 8,
-      offsetY: 8
-    });
-  });
-  //vendor script
-  $('#header')
-  .css({ 'top':-50 })
-  .delay(1000)
-  .animate({'top': 0}, 800);
-  
-  $('#footer')
-  .css({ 'bottom':-15 })
-  .delay(1000)
-  .animate({'bottom': 0}, 800);
-  
-  //blocksit define
 
-  //window resize
-  var currentWidth = 1100;
-  $(window).resize(function() {
-    var winWidth = $(window).width();
-    var conWidth;
-    if(winWidth < 660) {
-      conWidth = 440;
-      col = 1
-    } else if(winWidth < 880) {
-      conWidth = 660;
-      col = 2
-    } else if(winWidth < 1100) {
-      conWidth = 880;
-      col = 3;
-    } else {
-      conWidth = 1100;
-      col = 3;
-    }
     
-    if(conWidth != currentWidth) {
-      currentWidth = conWidth;
-      $('#container').width(conWidth);
-      $('#container').BlocksIt({
-        numOfCol: col,
-        offsetX: 8,
-        offsetY: 8
-      });
-    }
+  var $container = $('#container');
+  $container.imagesLoaded(function(){
+    $container.masonry({
+      itemSelector : '.grid'
+    });
+
+    $('#container').infinitescroll({
+     
+      navSelector  : "#pagination",            
+                     // selector for the paged navigation (it will be hidden)
+     
+      nextSelector : "#pagination a:first",    
+                     // selector for the NEXT link (to page 2)
+     
+      itemSelector : "#container .grid",          
+                     // selector for all items you'll retrieve
+     
+      debug        : true,                        
+                     // enable debug messaging ( to console.log )
+     
+      // loadingImg   : "/img/loading.gif",          
+                     // loading image.
+                     // default: "http://www.infinite-scroll.com/loading.gif"
+     
+      loadingText  : "Loading new posts...",      
+                     // text accompanying loading image
+                     // default: "<em>Loading the next set of posts...</em>"
+     
+      animate      : true,      
+                     // boolean, if the page will do an animated scroll when new content loads
+                     // default: false
+     
+      extraScrollPx: 50,      
+                     // number of additonal pixels that the page will scroll 
+                     // (in addition to the height of the loading div)
+                     // animate must be true for this to matter
+                     // default: 150
+     
+      donetext     : "I think we've hit the end, Jim" ,
+                     // text displayed when all items have been retrieved
+                     // default: "<em>Congratulations, you've reached the end of the internet.</em>"
+     
+      bufferPx     : 40,
+                     // increase this number if you want infscroll to fire quicker
+                     // (a high number means a user will not see the loading message)
+                     // new in 1.2
+                     // default: 40
+     
+      errorCallback: function(){console.log("errror")},
+                     // called when a requested page 404's or when there is no more content
+                     // new in 1.2                   
+     
+      localMode    : true
+                     // enable an overflow:auto box to have the same functionality
+                     // demo: http://paulirish.com/demo/infscr
+                     // instead of watching the entire window scrolling the element this plugin
+                     //   was called on will be watched
+                     // new in 1.2
+                     // default: false
+     
+        },function(newElements){
+           var $newElems = $( newElements ).css({ opacity: 0 });
+          // ensure that images load before adding to masonry layout
+          $newElems.imagesLoaded(function(){
+            // show elems now they're ready
+        
+            $newElems.animate({ opacity: 1 });
+            $("#container").masonry( 'appended', $newElems, true ); 
+          });
+     
+     });
+
+
   });
 
-  $('#filter').on('click', function(event) {
-    event.preventDefault();
+  // usage:
+// $(elem).infinitescroll(options,[callback]);
+ 
+// infinitescroll() is called on the element that surrounds 
+// the items you will be loading more of
 
-    $('#modal').css('display', 'block');
-
-  })
-
+    
 });
