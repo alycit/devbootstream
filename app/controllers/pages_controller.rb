@@ -3,12 +3,14 @@ class PagesController < ApplicationController
   def index
     @page_number = (params[:next_page].to_i || 0 )
     offset = @page_number * 30
-    @posts = Post.order("created_at DESC").limit(30).offset(offset)
+    @posts = Post.order("posted_at DESC").limit(30).offset(offset)
     render :index
   end
     
-  def search
-    # @posts = Post.search(params[:q]).limit(10)
+  def search 
+    @page_number = (params[:next_page].to_i || 0 )
+    offset = @page_number * 30
+    @posts = Post.search(params[:q]).order("posted_at DESC").limit(30).offset(offset)
     render :index
   end
 
