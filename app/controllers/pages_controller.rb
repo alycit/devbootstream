@@ -33,7 +33,7 @@ class PagesController < ApplicationController
 
     filter_params = params
 
-    filter_params.delete_if {|key, value| key == "controller" || key == "action" }
+    filter_params.delete_if {|key, value| key == "controller" || key == "action" ||key == "next_page" }
     Hash[ filter_params.map{ |(k,v)| [k.to_sym,v] } ]
 
     @page_number = (params[:next_page].to_i || 0 )
@@ -41,7 +41,7 @@ class PagesController < ApplicationController
     
     @posts = Post.all(
       :order => "posted_at desc", 
-      :limit => 50, 
+      :limit => 30, 
       :conditions => filter_params,
       :offset => offset
       )
@@ -78,7 +78,10 @@ class PagesController < ApplicationController
   end
   
   def search
-    @posts = Post.search(params[:q]).limit(10)
+    show_filters
+    @page_number = (params[:next_page].to_i || 0 )
+    offset = @page_number * 30
+    @posts = Post.search(body: params[:q]).order("posted_at DESC").offset(offset).limit(30)
     render :index
   end
 

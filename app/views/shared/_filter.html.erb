@@ -5,7 +5,7 @@
 
   <% @sources.each do |source| %> 
 
-    <li><%= link_to source.source, '?source=' + source.source %></li>
+    <li><%= link_to source.source, root_path(:source => source.source) %></li>
 
   <% end %>
 
