@@ -1,3 +1,3 @@
 web: bundle exec rails server -p $PORT
-worker: bundle exec rake sidekiq:listen
-worker: bundle exec sidekiq
+twitterworker: bundle exec rake twitter:listen
+tumblrworker: bundle exec rake tumblr:synchronize 
