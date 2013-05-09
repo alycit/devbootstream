@@ -31,14 +31,14 @@ class PagesController < ApplicationController
 
   def find_posts
 
-    filter_params = params
+    filter_params = params.dup
 
     filter_params.delete_if {|key, value| key == "controller" || key == "action" ||key == "next_page" }
     Hash[ filter_params.map{ |(k,v)| [k.to_sym,v] } ]
-
+    puts params[:next_page]
     @page_number = (params[:next_page].to_i || 0 )
     offset = @page_number * 30
-    
+    puts offset
     @posts = Post.all(
       :order => "posted_at desc", 
       :limit => 30, 
