@@ -7,6 +7,5 @@ class TwitterWorker
   sidekiq_options :retry => false
 
   def perform
-    #TBD 
   end
 end
