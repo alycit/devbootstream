@@ -12,7 +12,14 @@
     var pusher = new Pusher('182768e694888d0849e2');
     var channel = pusher.subscribe('bootstream');
     channel.bind('post_created', function(data) {
-      console.log(data);
+      $.get('posts/'+data.post_id,function(data){
+        var card = $(data);
+        card.imagesLoaded(function(){
+          //card images loaded
+          $('#container').prepend(card).masonry('reload');          
+        });
+
+      });
     });
   </script>
 
@@ -36,6 +43,8 @@
 <div id='container'>
   <%= yield %>
 </div> 
-
+  <div id='pagination'>
+    <%=link_to "next", params.merge({:next_page=>(@page_number+1)}) %>
+  </div>
 </body>
 </html>

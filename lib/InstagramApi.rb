@@ -47,7 +47,6 @@ module InstagramApi
     begin
       Instagram.media_search(coordinates_array[0],coordinates_array[1]).each do |obj|
         puts "Coordinates: #{coordinates_array}"
-        puts "Obj: #{obj}"
         unless (obj.tags & coordinate_tags).empty?
           create_instagram_post(obj)
         end

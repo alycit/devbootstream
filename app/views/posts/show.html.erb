@@ -1,0 +1,14 @@
+<div class="grid">
+
+<% if @post.source == 'tumblr' %>
+  <%= render 'shared/tumblr' %>
+<% end %>
+
+<% if @post.source == 'twitter' %>
+  <%= render 'shared/twitter' %>
+<% end %>
+
+<% if @post.source == 'instagram' %>
+  <%= render 'shared/instagram' %>
+<% end %>
+</div>

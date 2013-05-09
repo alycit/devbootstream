@@ -1,4 +1,5 @@
 Bootstream::Application.routes.draw do
+  get 'posts/:id', :to=> 'posts#show'
 
   get "subscription/new"
 
@@ -14,7 +15,6 @@ Bootstream::Application.routes.draw do
   root :to => "pages#index"
 
   post "/" => "pages#index"
-
 
 
   # The priority is based upon order of creation:

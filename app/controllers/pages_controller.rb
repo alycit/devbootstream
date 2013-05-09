@@ -8,18 +8,42 @@ class PagesController < ApplicationController
     render :index
   
   end
+    
+  def search 
+    @page_number = (params[:next_page].to_i || 0 )
+    offset = @page_number * 30
+    @posts = Post.search(params[:q]).order("posted_at DESC").limit(30).offset(offset)
+    render :index
+  end
+
+  def show_filters
+
+    @sources = Resource.select(:source).uniq
+    @phases = ['Prep', 'Phase 1', 'Phase 2', 'Phase 3', 'Phase 4', 'Alumni']
+    
+    cohorts = Cohort.select(:name).uniq
+    @cohorts = cohorts.sort_by { |cohort| cohort.name }
+    
+    @num_filters = @sources.length + @phases.length + @cohorts.length
+    # @locations = ['San Franciso', 'Chicago']
+
+  end
 
   def find_posts
 
-    params.delete_if {|key, value| key == "controller" || key == "action" }
-    Hash[ params.map{ |(k,v)| [k.to_sym,v] } ]
+    filter_params = params
 
-    conditions = params
+    filter_params.delete_if {|key, value| key == "controller" || key == "action" }
+    Hash[ filter_params.map{ |(k,v)| [k.to_sym,v] } ]
 
+    @page_number = (params[:next_page].to_i || 0 )
+    offset = @page_number * 30
+    
     @posts = Post.all(
-      :order => "created_at desc", 
+      :order => "posted_at desc", 
       :limit => 50, 
-      :conditions => conditions
+      :conditions => filter_params,
+      :offset => offset
       )
   
   end
