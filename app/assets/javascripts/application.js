@@ -96,7 +96,10 @@ $(document).ready(function() {
      
       errorCallback: function(){console.log("errror")},
                      // called when a requested page 404's or when there is no more content
-                     // new in 1.2                   
+                     // new in 1.2
+      path:          function(page_num){
+                      return $("#pagination a").attr("href").replace("page=1", "page="+page_num);
+                      },                   
      
       localMode    : true
                      // enable an overflow:auto box to have the same functionality

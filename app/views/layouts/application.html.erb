@@ -44,7 +44,7 @@
   <%= yield %>
 </div> 
   <div id='pagination'>
-    <%=link_to "next", params.merge({:next_page=>(@page_number+1)}) %>
+    <%=link_to("next", params.merge({:next_page=>(@page_number+1)})).html_safe %>
   </div>
 </body>
 </html>
