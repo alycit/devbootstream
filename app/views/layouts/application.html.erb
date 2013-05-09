@@ -13,10 +13,10 @@
     var channel = pusher.subscribe('bootstream');
     channel.bind('post_created', function(data) {
       $.get('posts/'+data.post_id,function(data){
-        var card = $(data)
+        var card = $(data);
         card.imagesLoaded(function(){
           //card images loaded
-          $('#container').prepend(card).masonry('reload')          
+          $('#container').prepend(card).masonry('reload');          
         });
 
       });
