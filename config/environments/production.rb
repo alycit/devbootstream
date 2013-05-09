@@ -20,6 +20,9 @@ Bootstream::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  # Enable memcache in production
+  config.cache_store = :mem_cache_store
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 

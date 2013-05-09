@@ -13,6 +13,9 @@ gem 'tweetstream'
 # gem 'time-ago-in-words'
 gem 'newrelic_rpm'
 gem 'sentry-raven'
+
+gem 'memcache-client'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
