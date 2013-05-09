@@ -9,7 +9,7 @@
  	<a href="#" id="about" class="filter_link">// about</a>
 
     <div class="search">
-      <%= form_tag do %>
+      <%= form_tag("/search", :method=>:get) do %>
         <%= text_field_tag(:q) %>
         <%= submit_tag("Search") %>
       <% end %>
