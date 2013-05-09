@@ -3,10 +3,12 @@
 <div id="sources">
   <ul class="source_filter">
 
-  <% @sources.each do |source| %> 
+  <% if @sources %>
+    <% @sources.each do |source| %> 
 
     <li><%= link_to source.source, root_path(:source => source.source) %></li>
 
+    <% end %>
   <% end %>
 
   </ul>
@@ -15,19 +17,22 @@
 <div id="phases">
   <ul class="phase_filter">
 
-  <% @phases.each_with_index do |phase,index| %>
+  <% if @phases %>
+    <% @phases.each_with_index do |phase,index| %>
 
     <li><%= link_to phase, '?phase_id=' + index.to_s %></li>
 
     <% end %>
+  <% end %>
 
   </ul>
 </div>
 
 <div id="cohorts">
   <ul class="cohort_filter_1">    
-    
-  <% @cohorts.each_with_index do |cohort,index| %>
+
+  <% if @cohorts %>    
+    <% @cohorts.each_with_index do |cohort,index| %>
 
     <% if @cohorts.length / 2 == index - 1 %>
       </ul><ul class="cohort_filter_2">
@@ -35,6 +40,7 @@
 
     <li><%= link_to cohort, '?cohort=' + cohort.to_s %></li>
   
+    <% end %>  
   <% end %>  
 
   </ul>

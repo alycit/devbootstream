@@ -1,0 +1,139 @@
+<%= stylesheet_link_tag "application", :media => "all" %>
+<%= javascript_include_tag "application" %>
+
+<div class="back_link"><%= link_to '- back to the stream -', root_path %></div>
+
+<center>
+ <div class="logo_about"><a href="<%= root_path %>"><%= image_tag 'logo.png' %></a></div>
+
+<div class="about">
+
+	<ul>
+	  <li><%= image_tag("jh.png") %>
+	  	<ul>
+	  	  <li>Johny Ho</li>
+	  	  <li><%= link_to 'LinkedIn', 'http://www.linkedin.com/profile/view?id=13077236' %></li>
+	  	  <li><%= link_to 'GitHub', 'https://github.com/jho406' %></li>
+	  	</ul>  
+	  </li>
+
+	  <li><%= image_tag("wy.png")  %>
+	    <ul>  
+	      <li>Wayne Yang</li>
+	  	  <li><%= link_to 'LinkedIn', 'http://www.linkedin.com/profile/view?id=230386262' %></li>
+	      <li><%= link_to 'GitHub', 'https://github.com/waysidekoi' %></li>
+	    </ul>
+	  </li>
+
+	  <li><%= image_tag("cf.png")  %>
+        <ul>
+	      <li>Conor Flanagan</li>	
+	  	  <li><%= link_to 'LinkedIn', 'http://www.linkedin.com/profile/view?id=25591851' %></li>
+	      <li><%= link_to 'GitHub', 'https://github.com/ConorFl' %></li>
+   	    </ul>
+   	  </li>
+
+   	  <li><%= image_tag("bf.png")  %>
+        <ul>
+	  	  <li>Ben Feldman</li>
+	      <li><%= link_to 'LinkedIn', 'http://www.linkedin.com/in/benfeldman' %></li>
+	      <li><%= link_to 'GitHub', 'https://github.com/anymd' %></li>
+      	</ul>
+      </li>
+
+    </ul> 
+
+<a style="color: #117aaa; border-bottom: 1px dotted #117aaa;" onmouseover="UE.Popin.preload();" href="#" onclick="UE.Popin.show(); return false;">Questions? Feedback? Requests?</a>
+
+</div>
+
+
+
+
+<div class="description">
+
+<h4>About Dev Bootstream</h4>
+
+<p>There are hundreds of people involved with <%= link_to 'Dev Bootcamp', 'http://devbootcamp.com' %>, from students and staff to mentors and hiring companies. Each of them has a vested interest in the success of the program. A lot of these people post blogs, pictures and tweets. A lot of us want an easy way to keep up with all those posts, pictures and tweets. That's where <%= link_to 'Dev Bootstream', 'http://devbootstream.com' %> comes in.</p>
+
+<p>BootStream was a final project built by four members of the Golden Bears 2013 cohort at Dev Bootcamp in San Francisco.</p>
+
+<h4>Tech we employed</h4>
+<ul class="tech">
+	<li><%= link_to 'Ruby on Rails', 'http://rubyonrails.org' %></li>
+
+	<li><%= link_to 'Twitter', 'http://dev.twitter.com' %>, <%= link_to 'Tumblr', 'http://tumblr.com/api' %>, <%= link_to 'Instagram', 'http://instagram.com/developer' %> APIs</li>
+
+	<li><%= link_to 'Heroku', 'http://heroku.com' %> cloud application platform for hosting our app</li> 
+
+	<li><%= link_to 'Postgres', 'http://www.postgresql.org' %> database</li> 
+
+	<li><%= link_to 'Sidekiq', 'http://mperham.github.io/sidekiq' %> background job message processor for Ruby that lets us update our database at a set frequency with the latest tweets, tumbls and instagram posts</li> 
+
+	<li><%= link_to 'Redis', 'http://redis.io' %> key/value store we’re using with Sidekiq</li> 
+
+	<li><%= link_to 'Masonry', 'http://masonry.desandro.com' %>, a really slick dynamic grid layout plugin for jQuery to make our UI look pretty damn good in our opinion</li> 
+
+	<li><%= link_to 'Infinite Scroll', 'http://www.infinite-scroll.com' %> jQuery plugin</li> 
+
+	<li><%= link_to 'New Relic', 'http://newrelic.com' %> application performance monitoring</li> 
+
+	<li><%= link_to 'Sentry', 'http://getsentry.com' %>, monitors your app for errors and emails you</li> 
+
+	<li><%= link_to 'Memcache', 'http://memcached.org' %></li> 
+
+	<li><%= link_to 'Textacular', 'http://textacular.github.io/textacular' %>, which extends ActiveRecord and Postgres for full-text search capabilities</li> 
+
+	<li><%= link_to 'Pusher', 'http://pusher.com' %>, which pushes new posts to our users’ pages without refresh</li> 
+
+	<li><%= link_to 'Apple Computers', 'http://apple.com' %></li> 
+
+	<li><%= link_to 'Logitech', 'http://www.logitech.com' %> mice</li> 
+
+	<li><%= link_to 'The World Wide Web', 'http://en.wikipedia.org/wiki/World_Wide_Web' %></li> 
+</ul>
+ 
+
+
+<h4>Dev Bootcamp</h4> 
+  <blockquote>
+    <i>"Dev Bootcamp is an immersive 9-week computer programming program founded by Shereef Bishay, Jesse Farmer, and Dave Hoover in February 2012. It is designed to make graduates job-ready by the end of the program. Dev Bootcamp is headquartered in San Francisco, California, with an additional location in Chicago, Illinois."</i> - <%= link_to 'Wikipedia', 'http://en.wikipedia.org/wiki/Dev_Bootcamp' %>
+  </blockquote>
+
+<div class="footer">
+	<a style="color: #117aaa; border-bottom: 1px dotted #117aaa;" onmouseover="UE.Popin.preload();" href="#" onclick="UE.Popin.show(); return false;">Questions? Feedback? Requests?</a>
+</div>	
+
+<center>- Dev Boostream is not officially affiliated with Dev Bootcamp - <br>&copy; Copyright 2013 - Ben Feldman, Conor Flanagan, Wayne Yang, Johny Ho - All rights reserved</center>
+
+</div>
+
+</center>
+
+
+<script type='text/javascript'>
+
+var _ues = {
+host:'bootstream.userecho.com',
+forum:'19742',
+lang:'en',
+tab_corner_radius:5,
+tab_font_size:20,
+tab_image_hash:'ZmVlZGJhY2s%3D',
+tab_chat_hash:'Y2hhdA%3D%3D',
+tab_alignment:'left',
+tab_text_color:'#FFFFFF',
+tab_text_shadow_color:'#00000055',
+tab_bg_color:'#57A957',
+tab_hover_color:'#F45C5c'
+};
+
+(function() {
+    var _ue = document.createElement('script'); _ue.type = 'text/javascript'; _ue.async = true;
+    _ue.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.userecho.com/js/widget-1.4.gz.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(_ue, s);
+  })();
+
+</script>
+
+
