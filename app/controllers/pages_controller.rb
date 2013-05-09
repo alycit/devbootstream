@@ -1,67 +1,61 @@
 class PagesController < ApplicationController
 
   def index
-  	show_filters
-  	apply_filters
+  
+    show_filters
+    find_posts
+    display_params
     render :index
+  
   end
+
+  def find_posts
+
+    params.delete_if {|key, value| key == "controller" || key == "action" }
+    Hash[ params.map{ |(k,v)| [k.to_sym,v] } ]
+
+    conditions = params
+
+    @posts = Post.all(
+      :order => "created_at desc", 
+      :limit => 50, 
+      :conditions => conditions
+      )
+  
+  end
+
+  def display_params
+
+    @source = params[:source]
     
-  def search
-    @posts = Post.search(params[:q]).limit(10)
-    render :index
+    if params[:phase_id]
+      @phase = @phases[params[:phase_id].to_i]
+    end
+    
+    @cohort = params[:cohort]
+
+  end
+
+  def list_phases
+    @phases = ['Prep', 'Phase 1', 'Phase 2', 'Phase 3', 'Phase 4', 'Alumni']
   end
 
   def show_filters
 
     @sources = Resource.select(:source).uniq
-    @phases = ['Prep', 'Phase 1', 'Phase 2', 'Phase 3', 'Phase 4', 'Alumni']
-    
-    cohorts = Cohort.select(:name).uniq
-    @cohorts = cohorts.sort_by { |cohort| cohort.name }
-    
-    @num_filters = @sources.length + @phases.length + @cohorts.length
-    # @locations = ['San Franciso', 'Chicago']
+
+    list_phases
+
+    cohorts = Post.select(:cohort).uniq
+    cohort_names = cohorts.pluck("cohort")
+    @cohorts = cohort_names.delete_if {|name| name == nil}
+    @cohorts = @cohorts.sort
 
   end
-
-  def apply_filters
-
-    if params[:source]
-      @source = params[:source]
-    else
-      @source = []
-    end
-
-    if params[:cohort]
-      @cohort = params[:cohort]
-    else
-      @cohort = []
-    end
-
-    if params[:phase]
-      @phase = params[:phase]
-    else
-      @phase = []
-    end
-
-    @all = @source.length + @phase.length + @cohort.length
-
-    if @all == 0
-
-      @posts = Post.order('posted_at DESC').limit(50)
-
-    else
-
-      @posts = Post.where(:source => params[:source], :phase_id => params[:phase], :cohort => params[:cohort]).order('posted_at DESC').limit(50)
-    
-    end
-
+  
+  def search
+    @posts = Post.search(params[:q]).limit(10)
+    render :index
   end
 
 end
-
-
-
-
-
-

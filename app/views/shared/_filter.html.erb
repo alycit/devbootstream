@@ -1,44 +1,41 @@
 
 
-<b>Source</b><br>
-<ul class="source_filter">
+<div id="sources">
+  <ul class="source_filter">
 
-	<% @sources.each do |source| %> 
+  <% @sources.each do |source| %> 
 
-	  <% if @source && @source.include?(source.source) %>	
-	  <li><%= check_box_tag 'source[]', source.source, true %> <%= source.source %></li>
-	  <% else %>
-      <li><%= check_box_tag 'source[]', source.source %> <%= source.source %></li>
-      <% end %>
+    <li><%= link_to source.source, '?source=' + source.source %></li>
 
   <% end %>
 
-</ul>
+  </ul>
+</div>
 
-<b>Phase</b><br>
-<ul class="phase_filter">
+<div id="phases">
+  <ul class="phase_filter">
 
   <% @phases.each_with_index do |phase,index| %>
 
-    <% if @phase && @phase.include?(index.to_s) %>
-      <li><%= check_box_tag 'phase[]', index, true %> <%= phase %></li> 
-    <% else %>  
-      <li><%= check_box_tag 'phase[]', index %> <%= phase %></li> 
+    <li><%= link_to phase, '?phase_id=' + index.to_s %></li>
+
     <% end %>
-  <% end %>  
 
-</ul>
+  </ul>
+</div>
 
-<b>Cohort</b><br>
-<ul class="cohort_filter">    
+<div id="cohorts">
+  <ul class="cohort_filter_1">    
     
   <% @cohorts.each_with_index do |cohort,index| %>
-    <% if index % 2 == 0; x = 1; else x = 2; end %>
-    <% if @cohort && @cohort.include?(cohort.name) %>
-      <li class='<%= x %>'><%= check_box_tag 'cohort[]', cohort.name, true %> <%= cohort.name %></li> 
-    <% else %>  
-      <li class='<%= x %>'><%= check_box_tag 'cohort[]', cohort.name %> <%= cohort.name %></li> 
-    <% end %>
+
+    <% if @cohorts.length / 2 == index - 1 %>
+      </ul><ul class="cohort_filter_2">
+    <% end %>  
+
+    <li><%= link_to cohort, '?cohort=' + cohort.to_s %></li>
+  
   <% end %>  
-    <li></li>
-</ul>
+
+  </ul>
+</div>

@@ -60,20 +60,6 @@
   padding-top: 5px;
 }
 
-#modal  {
-  display: none;
-  position:fixed;
-  left:250px;
-  top:50px;
-  z-index: 1;
-  background-color: white;
-  width: 500px;
-  padding: 20px;
-  border: 10px solid #ccc;
-  -moz-border-radius: 1em 1em 4em 4em;
-  border-radius: 1em 1em 4em 4em;
-}
-
 .logo {
   float: left;
   margin: 0 auto;
@@ -110,34 +96,17 @@ a.headline_link:hover {
  	float: right;
  }
 
-.source_filter li {
-  display: inline;
-  padding-left: 10px;
- }
-
-.phase_filter li {
-  display: inline;
-  padding-left: 10px;
- }
-
-
-.cohort_filter ul{
-  width:760px;
-  margin-bottom:0px;
-  padding: 0px;
-  overflow:hidden;
-  list-type: none;
+.source_filter, .phase_filter, .cohort_filter_1, .cohort_filter_2 {
+  list-style-type: none;
+  padding:0;
+  margin:10; 
+  list-style-position:inside; 
+  text-align:center;
 }
 
-.cohort_filter li{
-	width:50%;
-  line-height:1.5em;
-  float:left;
-  margin-left: 0px;
-  display:inline;
-  list-type: none;
-  padding: 0px;
-}
+.source_filter li, .phase_filter li, .cohort_filter_1 li, .cohort_filter_2 li {
+  margin:10px;
+ }
 
 .source_icon {
   float: left;
@@ -150,7 +119,32 @@ a.headline_link:hover {
   margin-left: 25px;
 }
 
+#sources, #phases, #cohorts  {
+  display: none;
+  position:absolute;
+  z-index: 1;
+  background-color: white;
+  padding: 20px;
+  border: 5px solid #ccc;
+  -moz-border-radius: 4em 4em 4em 4em;
+  border-radius: 4em 4em 4em 4em;
+}
 
 
+#sources, #phases {
+  width: 100px;
+}
+
+#cohorts  {
+  width: 200px; 
+}
+
+.filter_display {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
 
 
