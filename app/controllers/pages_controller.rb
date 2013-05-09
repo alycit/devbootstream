@@ -85,4 +85,8 @@ class PagesController < ApplicationController
     render :index
   end
 
+  def about
+    render 'about', :layout => false
+  end
+
 end

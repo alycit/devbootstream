@@ -43,8 +43,12 @@
 <div id='container'>
   <%= yield %>
 </div> 
+
+<% if @page_number %>
   <div id='pagination'>
     <%=link_to "next", params.merge({:next_page=>(@page_number+1)}) %>
   </div>
+<% end %>
+
 </body>
 </html>

@@ -16,6 +16,7 @@ Bootstream::Application.routes.draw do
 
   post "/" => "pages#index"
 
+  get 'about', :to => 'pages#about'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

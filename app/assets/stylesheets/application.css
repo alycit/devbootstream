@@ -12,6 +12,8 @@
  *= require_tree .
  */
 
+
+
 .search {
   display: inline-block;
   float: right;
@@ -130,7 +132,6 @@ a.headline_link:hover {
   border-radius: 4em 4em 4em 4em;
 }
 
-
 #sources, #phases {
   width: 100px;
 }
@@ -147,4 +148,85 @@ a.headline_link:hover {
   font-weight: bold;
 }
 
+.logo_about {
+  text-align: center;
+  padding-top: 14px;
+}
+
+.about {
+  padding-bottom: 20px;
+}
+
+.about ul {
+  width: 100%;
+  padding-left: 0px;
+}
+
+.about li {
+  display: inline-block;
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  -moz-box-shadow:    1px 1px 1px 1px #ccc;
+  -webkit-box-shadow: 1px 1px 1px 1px #ccc;
+  box-shadow:         1px 1px 1px 1px #ccc;
+}
+
+.about img {
+  padding: 5px;
+  width: 140px;
+  height: 140px;
+}
+
+.about ul li ul li {
+  clear: both;
+  display: block;
+  padding: 1px;
+  margin: 3px;
+  -moz-box-shadow:    none;
+  -webkit-box-shadow: none;
+  box-shadow:         none;
+}
+
+.about ul li ul li:nth-child(1) {
+  font-weight: bold;
+}
+
+.description {
+  width: 75%;
+  clear: both;
+  text-align: left;
+  padding-bottom: 200px;
+  line-height: 1.8em;
+  border-top: 1px dotted;
+}
+
+.description a, .about a, .back_link a {
+  color: #117aaa;
+  border-bottom: 1px dotted #117aaa;
+}
+
+.back_link a {
+  font-size: 16px;
+}
+
+.tech {
+  width: 80%;
+}
+
+.footer {
+  text-align: center;
+  border-top: 1px dotted;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.back_link {
+  text-align: center;
+  padding: 20px;
+}
+
+.search {
+  padding: 14px;
+}
 
