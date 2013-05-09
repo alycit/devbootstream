@@ -1,41 +1,11 @@
 
-<% if @posts.length == 0 %>
-
-  0 posts found<br><br>
-
-<% end %>
-
-<% if @posts.length < 5 && @posts.length > 0 %>
-
-  Less than 5 posts, try relaxing your filters.
-
-<% end %>
-
-<% if @all != 0 || @num_filters == @all %>
-
-  There are filters applied.
-
-<% end %>
-
-
-
-<%#= render "shared/filter_error" %>
-
-
-
-<% if flash[:notice] %>
-    <div id="notice"><%= flash[:notice] %></div>
-<% end %>
-
-<%#= params %>
 
 <% @posts.each do |post| %>
   <% @post = post %>
 
-    <% source = @post.resource.source %>
+    <% source = @post.source %>
 
 <div class="grid">
-
 
       <% if source == 'tumblr' %>
         <%= render 'shared/tumblr' %>
@@ -48,18 +18,8 @@
       <% if source == 'instagram' %>
         <%= render 'shared/instagram' %>
       <% end %>
+
 </div>
 
 
 <% end %>   
-
-
-
-
-
-
-
-
-
-
-

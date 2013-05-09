@@ -29,7 +29,16 @@
 
 
 <body>
+
 <%= render 'shared/header' %>
+
+<%= render "shared/filter" %>
+
+<div class="filter_display"><%= @source %> <%= @phase %> <%= @cohort %>  
+  <% if @source || @phase || @cohort %>
+    <%= link_to '// clear', root_path %>
+  <% end %>
+</div>  
 
 <div id='container'>
   <%= yield %>

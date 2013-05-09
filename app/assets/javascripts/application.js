@@ -14,14 +14,43 @@
 //= require jquery_ujs
 //= require_tree .
 
+var tempX = 0;
+var tempY = 0;
+
 $(document).ready(function() {
 
-    
   var $container = $('#container');
   $container.imagesLoaded(function(){
     $container.masonry({
       itemSelector : '.grid'
     });
+
+  $(document).mousemove(function (e) {
+        var bodyOffsets = document.body.getBoundingClientRect();
+        tempX = e.pageX - bodyOffsets.left;
+        tempY = e.pageY;
+  });
+
+  $('#source').click(function(event) {
+    $('#sources').css({'left': tempX -100, 'top': tempY -20 }).show(); 
+  }), $("#sources").hover(function() {
+    }, function(){
+    $("#sources").hide();
+  });
+
+  $('#phase').click(function(event) {
+    $('#phases').css({'left': tempX -100, 'top': tempY -20 }).show(); 
+  }), $("#phases").hover(function() {
+    }, function(){
+    $("#phases").hide();
+  });
+
+  $('#cohort').click(function(event) {
+    $('#cohorts').css({'left': tempX -100, 'top': tempY -20 }).show(); 
+  }), $("#cohorts").hover(function() {
+    }, function(){
+    $("#cohorts").hide();
+  });
 
     $('#container').infinitescroll({
      
@@ -98,5 +127,15 @@ $(document).ready(function() {
 // infinitescroll() is called on the element that surrounds 
 // the items you will be loading more of
 
+
     
 });
+
+
+
+
+
+
+
+
+
