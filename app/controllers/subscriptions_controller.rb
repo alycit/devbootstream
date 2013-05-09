@@ -1,7 +1,6 @@
 class SubscriptionsController < ApplicationController
   def create
-    # Subscription.update(params)
-    puts "REQUEST HEADER: #{request.inspect}"
+    Subscription.update(params)
     render :nothing => true
   end
 
