@@ -15,6 +15,8 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+
+
 module Bootstream
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -70,6 +72,9 @@ module Bootstream
 
     #Heroku specific configuration to keep precompile to pass.#http://www.simonecarletti.com/blog/2012/02/heroku-and-rails-3-2-assetprecompile-error/
     config.assets.initialize_on_precompile = false
+
+    # Default to null_store (production overrides to mem_cache_store)
+    config.cache_store = :null_store
 
   end
 end

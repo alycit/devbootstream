@@ -1,25 +1,5 @@
-
-
 <% @posts.each do |post| %>
-  <% @post = post %>
-
-    <% source = @post.source %>
-
-<div class="grid">
-
-      <% if source == 'tumblr' %>
-        <%= render 'shared/tumblr' %>
-      <% end %>
-
-      <% if source == 'twitter' %>
-        <%= render 'shared/twitter' %>
-      <% end %>
-
-      <% if source == 'instagram' %>
-        <%= render 'shared/instagram' %>
-      <% end %>
-
-</div>
-
-
+    <div class="grid">
+      <%= render_post(post) %>
+    </div>
 <% end %>   
